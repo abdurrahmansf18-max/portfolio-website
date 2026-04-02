@@ -1,0 +1,230 @@
+"use client"
+
+import { useState } from "react"
+import { useLanguage } from "@/lib/language-context"
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Linkedin,
+  Github,
+  Facebook,
+  Send,
+} from "lucide-react"
+import { cn } from "@/lib/utils"
+
+const contactInfo = [
+  {
+    icon: Phone,
+    key: "phone",
+    value: "+90 539 738 94 76",
+    href: "tel:+905397389476",
+  },
+  {
+    icon: Mail,
+    key: "email",
+    value: "abdurrahmansf18@gmail.com",
+    href: "mailto:abdurrahmansf18@gmail.com",
+  },
+  {
+    icon: MapPin,
+    key: "location",
+    value: "Ankara, Türkiye",
+    href: null,
+  },
+]
+
+const socialLinks = [
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/abdurrahman-el-%C5%9Favvaf-03208b3ab/",
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    href: "https://github.com/abdurrahmansf18-max",
+  },
+  {
+    icon: Facebook,
+    label: "Facebook",
+    href: "https://www.facebook.com/abdurrahman.sf.75/",
+  },
+]
+
+export function ContactSection() {
+  const { t, isRTL } = useLanguage()
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Form submission logic would go here
+    console.log("Form submitted:", formData)
+    // Reset form
+    setFormData({ name: "", email: "", message: "" })
+  }
+
+  return (
+    <section id="contact" className="py-20 md:py-32 bg-muted/30">
+      <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto">
+          {/* Section Title */}
+          <div className="mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+              {t.contact.title}
+            </h2>
+            <div className="w-20 h-1 bg-primary rounded-full" />
+            <p className="text-muted-foreground mt-4 max-w-2xl">
+              {t.contact.description}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* Contact Info */}
+            <div>
+              <h3 className="text-xl font-semibold text-foreground mb-6">
+                {t.contact.subtitle}
+              </h3>
+
+              {/* Contact Details */}
+              <div className="space-y-4 mb-8">
+                {contactInfo.map((item) => (
+                  <div
+                    key={item.key}
+                    className={cn(
+                      "flex items-center gap-4 p-4 bg-background rounded-lg border border-border",
+                      isRTL && "flex-row-reverse text-right"
+                    )}
+                  >
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <item.icon size={20} className="text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm text-muted-foreground">
+                        {t.contact.info[item.key as keyof typeof t.contact.info]}
+                      </p>
+                      {item.href ? (
+                        <a
+                          href={item.href}
+                          className="text-foreground hover:text-primary transition-colors"
+                        >
+                          {item.value}
+                        </a>
+                      ) : (
+                        <p className="text-foreground">{item.value}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Social Links */}
+              <div>
+                <p className="text-sm text-muted-foreground mb-4">
+                  {isRTL ? "تابعني على" : "Follow me on"}
+                </p>
+                <div className={cn("flex items-center gap-3", isRTL && "flex-row-reverse")}>
+                  {socialLinks.map((social) => (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-3 bg-background rounded-lg border border-border hover:border-primary/30 hover:bg-muted transition-colors group"
+                      aria-label={social.label}
+                    >
+                      <social.icon
+                        size={20}
+                        className="text-muted-foreground group-hover:text-foreground transition-colors"
+                      />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <div>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
+                    {t.contact.form.name}
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
+                    placeholder={t.contact.form.namePlaceholder}
+                    className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
+                    {t.contact.form.email}
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                    placeholder={t.contact.form.emailPlaceholder}
+                    className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-foreground mb-2"
+                  >
+                    {t.contact.form.message}
+                  </label>
+                  <textarea
+                    id="message"
+                    value={formData.message}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
+                    placeholder={t.contact.form.messagePlaceholder}
+                    rows={5}
+                    className="w-full px-4 py-3 bg-background border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors resize-none"
+                    required
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className={cn(
+                    "inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors",
+                    isRTL && "flex-row-reverse"
+                  )}
+                >
+                  <Send size={18} />
+                  {t.contact.form.send}
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
