@@ -10,19 +10,17 @@ export function AboutSection() {
   const highlights = [
     {
       icon: MapPin,
-      label: isRTL ? "أنقرة، تركيا" : "Ankara, Turkiye",
+      label: t.about.location,
       gradient: "from-[#6366F1] to-[#22D3EE]",
     },
     {
       icon: GraduationCap,
-      label: isRTL
-        ? "جامعة أوستيم التقنية"
-        : "Ostim Technical University",
+      label: t.about.education,
       gradient: "from-[#A855F7] to-[#F472B6]",
     },
     {
       icon: Briefcase,
-      label: isRTL ? "شركة Rakort (تدريب 1 سنة)" : "Rakort (1 Year Internship)",
+      label: t.about.experience,
       gradient: "from-[#22C55E] to-[#06B6D4]",
     },
   ]
@@ -36,15 +34,18 @@ export function AboutSection() {
 
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          {/* Section Title with gradient */}
-          <div className="mb-12">
+          {/* Section Title */}
+          <div className={cn("mb-12", isRTL && "text-right")}>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               <span className="text-gradient">{t.about.title}</span>
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-[var(--gradient-primary-start)] to-[var(--gradient-primary-end)] rounded-full" />
+            <div className={cn(
+              "w-20 h-1 bg-gradient-to-r from-[var(--gradient-primary-start)] to-[var(--gradient-primary-end)] rounded-full",
+              isRTL && "ml-auto"
+            )} />
           </div>
 
-          {/* Highlights with gradient icons */}
+          {/* Highlights */}
           <div
             className={cn(
               "flex flex-wrap gap-4 mb-10",
@@ -71,7 +72,7 @@ export function AboutSection() {
           </div>
 
           {/* Bio */}
-          <div className="prose prose-lg dark:prose-invert max-w-none">
+          <div className={cn("prose prose-lg dark:prose-invert max-w-none", isRTL && "text-right")}>
             {t.about.bio.split("\n\n").map((paragraph, index) => (
               <p
                 key={index}
@@ -82,7 +83,7 @@ export function AboutSection() {
             ))}
           </div>
 
-          {/* Project Link with enhanced styling */}
+          {/* Project Link Card */}
           <div className="mt-10 p-6 bg-card rounded-xl border border-border card-glow hover-scale">
             <div
               className={cn(
@@ -95,12 +96,10 @@ export function AboutSection() {
               </div>
               <div className="flex-1">
                 <h3 className="text-lg font-semibold text-foreground mb-2">
-                  {isRTL ? "مشروع عميل حقيقي" : "Real Client Project"}
+                  {t.about.realProject}
                 </h3>
                 <p className="text-muted-foreground mb-3">
-                  {isRTL
-                    ? "تم تطوير وبيع موقع ويب احترافي لعميل حقيقي"
-                    : "Developed and sold a professional website for a real client"}
+                  {t.about.realProjectDesc}
                 </p>
                 <a
                   href="https://www.ergunnakliyatevdeneve.com/"

@@ -49,7 +49,7 @@ export function Footer() {
             {/* Brand with gradient */}
             <div className={cn("text-center md:text-left", isRTL && "md:text-right")}>
               <h3 className="text-xl font-bold text-gradient">
-                Abdurrahman El Savvaf
+                {isRTL ? "عبد الرحمن الشواف" : "Abdurrahman El Savvaf"}
               </h3>
               <p className="text-sm text-muted-foreground mt-1">
                 {t.footer.developer}
@@ -76,7 +76,7 @@ export function Footer() {
           {/* Copyright with heart */}
           <div className="mt-8 pt-6 border-t border-border text-center">
             <p className="text-sm text-muted-foreground inline-flex items-center gap-1.5 justify-center flex-wrap">
-              &copy; {currentYear} Abdurrahman El Savvaf. {t.footer.rights}.
+              &copy; {currentYear} {isRTL ? "عبد الرحمن الشواف" : "Abdurrahman El Savvaf"}. {t.footer.rights}.
               <span className="inline-flex items-center gap-1">
                 Built with <Heart size={14} className="text-primary fill-primary animate-pulse" />
               </span>

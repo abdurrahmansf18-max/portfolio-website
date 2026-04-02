@@ -1,84 +1,140 @@
 "use client"
 
 import { useLanguage } from "@/lib/language-context"
-import { FolderOpen, ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, FolderOpen } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-// Project card component for future use
+// Project interface
 interface Project {
-  title: string
-  description: string
+  id: string
+  title: {
+    en: string
+    tr: string
+    ar: string
+  }
+  description: {
+    en: string
+    tr: string
+    ar: string
+  }
   technologies: string[]
+  features: {
+    en: string[]
+    tr: string[]
+    ar: string[]
+  }
   liveUrl?: string
   githubUrl?: string
-  image?: string
 }
 
+// Sample projects data - can be expanded
+const projects: Project[] = [
+  {
+    id: "ergun-nakliyat",
+    title: {
+      en: "Ergun Nakliyat Moving Company",
+      tr: "Ergun Nakliyat Evden Eve Taşımacılık",
+      ar: "شركة إرجون للنقل",
+    },
+    description: {
+      en: "Professional moving company website with modern design, service showcases, and contact system. Delivered as a production-ready solution for a real client.",
+      tr: "Modern tasarım, hizmet tanıtımları ve iletişim sistemi içeren profesyonel nakliyat şirketi web sitesi. Gerçek bir müşteri için üretime hazır çözüm olarak teslim edildi.",
+      ar: "موقع شركة نقل احترافي بتصميم عصري وعرض الخدمات ونظام اتصال. تم تسليمه كحل جاهز للإنتاج لعميل حقيقي.",
+    },
+    technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
+    features: {
+      en: ["Responsive Design", "SEO Optimized", "Contact Form", "Service Pages"],
+      tr: ["Duyarlı Tasarım", "SEO Optimize", "İletişim Formu", "Hizmet Sayfaları"],
+      ar: ["تصميم متجاوب", "محسّن لمحركات البحث", "نموذج اتصال", "صفحات الخدمات"],
+    },
+    liveUrl: "https://www.ergunnakliyatevdeneve.com/",
+  },
+]
+
 function ProjectCard({ project }: { project: Project }) {
-  const { t, isRTL } = useLanguage()
+  const { t, language, isRTL } = useLanguage()
+
+  const title = project.title[language]
+  const description = project.description[language]
+  const features = project.features[language]
 
   return (
-    <div className="group bg-card rounded-xl border border-border overflow-hidden card-glow tilt-card">
-      {/* Project Image Placeholder */}
-      {project.image ? (
-        <div className="aspect-video bg-muted overflow-hidden">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-        </div>
-      ) : (
-        <div className="aspect-video bg-gradient-to-br from-[var(--gradient-primary-start)]/10 to-[var(--gradient-secondary-start)]/10 flex items-center justify-center">
-          <FolderOpen size={48} className="text-muted-foreground/30" />
-        </div>
-      )}
-
-      <div className="p-6">
-        <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-gradient transition-all duration-300">
-          {project.title}
+    <div className="group bg-card rounded-2xl border border-border overflow-hidden card-glow">
+      {/* Project Header */}
+      <div className="p-6 pb-4">
+        <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-gradient transition-all duration-300">
+          {title}
         </h3>
-        <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-          {project.description}
+        <p className={cn(
+          "text-muted-foreground text-sm leading-relaxed mb-4",
+          isRTL && "text-right"
+        )}>
+          {description}
         </p>
+      </div>
 
-        {/* Technologies */}
-        <div className={cn("flex flex-wrap gap-2 mb-4", isRTL && "justify-end")}>
+      {/* Technologies */}
+      <div className={cn("px-6 pb-4", isRTL && "text-right")}>
+        <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wider mb-2">
+          {t.projects.technologies}
+        </p>
+        <div className={cn("flex flex-wrap gap-2", isRTL && "justify-end")}>
           {project.technologies.map((tech) => (
             <span
               key={tech}
-              className="px-2 py-1 bg-muted text-xs text-muted-foreground rounded skill-tag"
+              className="px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full"
             >
               {tech}
             </span>
           ))}
         </div>
+      </div>
 
-        {/* Links */}
-        <div className={cn("flex items-center gap-3", isRTL && "flex-row-reverse")}>
-          {project.liveUrl && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm text-gradient font-medium hover:opacity-80 transition-opacity"
-            >
-              <ExternalLink size={14} className="text-primary" />
-              {t.projects.viewProject}
-            </a>
-          )}
-          {project.githubUrl && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <Github size={14} />
-              {t.projects.viewCode}
-            </a>
-          )}
-        </div>
+      {/* Key Features */}
+      <div className={cn("px-6 pb-4", isRTL && "text-right")}>
+        <p className="text-xs font-semibold text-foreground/70 uppercase tracking-wider mb-2">
+          {t.projects.keyFeatures}
+        </p>
+        <ul className={cn(
+          "space-y-1 text-sm text-muted-foreground",
+          isRTL ? "list-none" : "list-disc list-inside"
+        )}>
+          {features.map((feature, index) => (
+            <li key={index} className={cn(isRTL && "flex items-center gap-2 justify-end")}>
+              {isRTL && <span className="w-1.5 h-1.5 bg-primary rounded-full" />}
+              {feature}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Actions */}
+      <div className={cn(
+        "px-6 py-4 bg-muted/30 border-t border-border flex items-center gap-4",
+        isRTL && "flex-row-reverse"
+      )}>
+        {project.liveUrl && (
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
+          >
+            <ExternalLink size={16} />
+            {t.projects.viewProject}
+          </a>
+        )}
+        {project.githubUrl && (
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 border border-border bg-card text-foreground rounded-lg text-sm font-medium hover:bg-muted transition-colors"
+          >
+            <Github size={16} />
+            {t.projects.viewCode}
+          </a>
+        )}
       </div>
     </div>
   )
@@ -86,9 +142,6 @@ function ProjectCard({ project }: { project: Project }) {
 
 export function ProjectsSection() {
   const { t, isRTL } = useLanguage()
-
-  // Empty projects array - ready for future additions
-  const projects: Project[] = []
 
   return (
     <section id="projects" className="py-20 md:py-32 relative overflow-hidden">
@@ -99,18 +152,21 @@ export function ProjectsSection() {
 
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          {/* Section Title with gradient */}
-          <div className="mb-12">
+          {/* Section Title */}
+          <div className={cn("mb-12", isRTL && "text-right")}>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               <span className="text-gradient">{t.projects.title}</span>
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-[var(--gradient-primary-start)] to-[var(--gradient-primary-end)] rounded-full" />
+            <div className={cn(
+              "w-20 h-1 bg-gradient-to-r from-[var(--gradient-primary-start)] to-[var(--gradient-primary-end)] rounded-full",
+              isRTL && "ml-auto"
+            )} />
           </div>
 
           {projects.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects.map((project, index) => (
-                <ProjectCard key={index} project={project} />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {projects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
               ))}
             </div>
           ) : (
@@ -120,13 +176,8 @@ export function ProjectsSection() {
                 <FolderOpen size={48} className="text-primary" />
               </div>
               <p className="text-xl text-muted-foreground mb-2">
-                {t.projects.placeholder}
+                Projects coming soon...
               </p>
-              <div className="px-4 py-2 bg-card rounded-lg border border-border mt-4">
-                <code className="text-sm text-gradient-secondary font-mono">
-                  {"// Coming soon..."}
-                </code>
-              </div>
             </div>
           )}
         </div>

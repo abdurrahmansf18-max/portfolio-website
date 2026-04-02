@@ -3,37 +3,63 @@
 import { useLanguage } from "@/lib/language-context"
 import { Github, Linkedin, ArrowDown, Download, Mail } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useEffect, useState } from "react"
 
-// Floating tech icons component
-function FloatingIcons() {
-  const icons = [
-    { name: "React", color: "#61DAFB", delay: "0s" },
-    { name: "Python", color: "#3776AB", delay: "1s" },
-    { name: "TS", color: "#3178C6", delay: "2s" },
-    { name: ".NET", color: "#512BD4", delay: "0.5s" },
-    { name: "DB", color: "#4ADE80", delay: "1.5s" },
+// Typing animation hook
+function useTypingAnimation(texts: string[], typingSpeed = 100, deletingSpeed = 50, pauseDuration = 2000) {
+  const [displayText, setDisplayText] = useState("")
+  const [textIndex, setTextIndex] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  useEffect(() => {
+    const currentText = texts[textIndex]
+    
+    const timeout = setTimeout(() => {
+      if (!isDeleting) {
+        if (displayText.length < currentText.length) {
+          setDisplayText(currentText.slice(0, displayText.length + 1))
+        } else {
+          setTimeout(() => setIsDeleting(true), pauseDuration)
+        }
+      } else {
+        if (displayText.length > 0) {
+          setDisplayText(displayText.slice(0, -1))
+        } else {
+          setIsDeleting(false)
+          setTextIndex((prev) => (prev + 1) % texts.length)
+        }
+      }
+    }, isDeleting ? deletingSpeed : typingSpeed)
+
+    return () => clearTimeout(timeout)
+  }, [displayText, isDeleting, textIndex, texts, typingSpeed, deletingSpeed, pauseDuration])
+
+  return displayText
+}
+
+// Stats component
+function StatsSection() {
+  const { t, isRTL } = useLanguage()
+  
+  const stats = [
+    { value: "1+", label: t.stats.experience },
+    { value: "5+", label: t.stats.projects },
+    { value: "3+", label: t.stats.clients },
   ]
 
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {icons.map((icon, index) => (
-        <div
-          key={icon.name}
-          className={cn(
-            "absolute w-12 h-12 rounded-xl flex items-center justify-center text-xs font-bold opacity-20 dark:opacity-30",
-            index === 0 && "top-[20%] left-[10%] animate-float",
-            index === 1 && "top-[15%] right-[15%] animate-float-delayed",
-            index === 2 && "bottom-[30%] left-[5%] animate-float-slow",
-            index === 3 && "top-[40%] right-[8%] animate-float",
-            index === 4 && "bottom-[20%] right-[20%] animate-float-delayed"
-          )}
-          style={{
-            backgroundColor: icon.color + "20",
-            color: icon.color,
-            animationDelay: icon.delay,
-          }}
-        >
-          {icon.name}
+    <div className={cn(
+      "flex flex-wrap justify-center gap-8 md:gap-16 mt-16 pt-16 border-t border-border/50",
+      isRTL && "flex-row-reverse"
+    )}>
+      {stats.map((stat, index) => (
+        <div key={index} className="text-center">
+          <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">
+            {stat.value}
+          </div>
+          <div className="text-muted-foreground text-sm md:text-base">
+            {stat.label}
+          </div>
         </div>
       ))}
     </div>
@@ -42,6 +68,7 @@ function FloatingIcons() {
 
 export function HeroSection() {
   const { t, isRTL } = useLanguage()
+  const typingText = useTypingAnimation(t.hero.typingTexts as unknown as string[], 80, 40, 1500)
 
   return (
     <section
@@ -53,19 +80,16 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-br from-[var(--gradient-primary-start)]/5 via-transparent to-[var(--gradient-secondary-start)]/5 animate-gradient" />
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[var(--gradient-primary-start)]/10 rounded-full blur-[100px] animate-float" />
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[var(--gradient-secondary-start)]/10 rounded-full blur-[100px] animate-float-delayed" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--gradient-primary-end)]/5 rounded-full blur-[120px] animate-float-slow" />
       </div>
-
-      {/* Floating tech icons */}
-      <FloatingIcons />
 
       <div className="container mx-auto px-4 pt-20">
         <div className="max-w-4xl mx-auto text-center">
-          {/* Code-like decoration with glow */}
-          <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 bg-card/50 backdrop-blur-sm rounded-full border border-border text-sm text-muted-foreground animate-slide-up card-glow">
-            <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-            <code className="font-mono">{"<FullStackDeveloper />"}</code>
-          </div>
+          {/* Greeting */}
+          <p 
+            className="text-lg md:text-xl text-muted-foreground mb-4 animate-slide-up"
+          >
+            {t.hero.greeting}
+          </p>
 
           {/* Name with gradient */}
           <h1 
@@ -75,13 +99,16 @@ export function HeroSection() {
             <span className="text-gradient">{t.hero.title}</span>
           </h1>
 
-          {/* Subtitle with secondary gradient */}
-          <h2 
-            className="text-xl md:text-2xl font-medium mb-6 text-gradient-secondary animate-slide-up"
+          {/* Typing animation subtitle */}
+          <div 
+            className="h-10 md:h-12 flex items-center justify-center mb-6 animate-slide-up"
             style={{ animationDelay: "0.2s" }}
           >
-            {t.hero.subtitle}
-          </h2>
+            <span className="text-xl md:text-2xl font-medium text-foreground">
+              {typingText}
+            </span>
+            <span className="w-0.5 h-6 md:h-8 bg-primary ml-1 animate-pulse" />
+          </div>
 
           {/* Description */}
           <p 
@@ -91,10 +118,32 @@ export function HeroSection() {
             {t.hero.description}
           </p>
 
-          {/* Social Links with glow */}
-          <div 
-            className="flex items-center justify-center gap-4 mb-10 animate-slide-up"
+          {/* CTA Buttons */}
+          <div
+            className={cn(
+              "flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up",
+              isRTL && "sm:flex-row-reverse"
+            )}
             style={{ animationDelay: "0.4s" }}
+          >
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-medium text-white btn-gradient text-lg"
+            >
+              {t.hero.contactMe}
+            </a>
+            <a
+              href="#projects"
+              className="inline-flex items-center gap-2 px-8 py-4 border border-border bg-card text-foreground rounded-lg font-medium hover:bg-muted transition-all duration-300 card-glow text-lg"
+            >
+              {t.hero.viewProjects}
+            </a>
+          </div>
+
+          {/* Social Links */}
+          <div 
+            className="flex items-center justify-center gap-4 mt-8 animate-slide-up"
+            style={{ animationDelay: "0.5s" }}
           >
             <a
               href="https://github.com/abdurrahmansf18-max"
@@ -104,7 +153,7 @@ export function HeroSection() {
               aria-label="GitHub"
             >
               <Github
-                size={22}
+                size={24}
                 className="text-muted-foreground group-hover:text-foreground transition-colors"
               />
             </a>
@@ -116,42 +165,24 @@ export function HeroSection() {
               aria-label="LinkedIn"
             >
               <Linkedin
-                size={22}
+                size={24}
+                className="text-muted-foreground group-hover:text-foreground transition-colors"
+              />
+            </a>
+            <a
+              href="mailto:abdurrahmansf18@gmail.com"
+              className="p-3 rounded-full border border-border bg-card hover:bg-muted transition-all duration-300 group card-glow"
+              aria-label="Email"
+            >
+              <Mail
+                size={24}
                 className="text-muted-foreground group-hover:text-foreground transition-colors"
               />
             </a>
           </div>
 
-          {/* CTA Buttons with gradient */}
-          <div
-            className={cn(
-              "flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up",
-              isRTL && "sm:flex-row-reverse"
-            )}
-            style={{ animationDelay: "0.5s" }}
-          >
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium text-white btn-gradient"
-            >
-              <Mail size={18} />
-              {t.hero.contactMe}
-            </a>
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-border bg-card text-foreground rounded-lg font-medium hover:bg-muted transition-all duration-300 card-glow"
-            >
-              <Download size={18} />
-              {t.hero.downloadCV}
-            </a>
-            <a
-              href="#projects"
-              className="inline-flex items-center gap-2 px-6 py-3 text-muted-foreground hover:text-foreground transition-colors animated-underline"
-            >
-              {t.hero.viewProjects}
-              <ArrowDown size={18} />
-            </a>
-          </div>
+          {/* Stats */}
+          <StatsSection />
         </div>
 
         {/* Scroll indicator */}

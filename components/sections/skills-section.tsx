@@ -73,12 +73,15 @@ export function SkillsSection() {
 
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          {/* Section Title with gradient */}
-          <div className="mb-12">
+          {/* Section Title */}
+          <div className={cn("mb-12", isRTL && "text-right")}>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               <span className="text-gradient">{t.skills.title}</span>
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-[var(--gradient-primary-start)] to-[var(--gradient-primary-end)] rounded-full" />
+            <div className={cn(
+              "w-20 h-1 bg-gradient-to-r from-[var(--gradient-primary-start)] to-[var(--gradient-primary-end)] rounded-full",
+              isRTL && "ml-auto"
+            )} />
           </div>
 
           {/* Skills Grid */}
@@ -87,7 +90,6 @@ export function SkillsSection() {
               <div
                 key={category.key}
                 className="p-6 bg-card rounded-xl border border-border card-glow hover-scale group"
-                style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div
                   className={cn(
