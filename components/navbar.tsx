@@ -40,16 +40,16 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-background/80 backdrop-blur-md border-b border-border shadow-sm"
+          ? "bg-card/80 backdrop-blur-md border-b border-border shadow-lg"
           : "bg-transparent"
       )}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Logo with gradient */}
           <a
             href="#home"
-            className="text-lg font-semibold text-foreground hover:text-primary transition-colors"
+            className="text-xl font-bold text-gradient hover:opacity-80 transition-opacity"
           >
             AES
           </a>
@@ -61,7 +61,7 @@ export function Navbar() {
                 <li key={link.key}>
                   <a
                     href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors animated-underline"
                   >
                     {t.nav[link.key as keyof typeof t.nav]}
                   </a>
@@ -69,18 +69,18 @@ export function Navbar() {
               ))}
             </ul>
 
-            {/* Language Switcher */}
-            <div className="flex items-center gap-1 text-sm border border-border rounded-md overflow-hidden">
+            {/* Language Switcher with gradient active state */}
+            <div className="flex items-center text-sm border border-border rounded-lg overflow-hidden bg-card/50 backdrop-blur-sm">
               {languages.map((lang, index) => (
                 <button
                   key={lang.code}
                   onClick={() => setLanguage(lang.code)}
                   className={cn(
-                    "px-2 py-1 transition-colors",
+                    "px-3 py-1.5 transition-all duration-300",
                     language === lang.code
-                      ? "bg-primary text-primary-foreground"
+                      ? "btn-gradient text-white"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted",
-                    index !== languages.length - 1 && "border-r border-border"
+                    index !== languages.length - 1 && language !== lang.code && "border-r border-border"
                   )}
                 >
                   {lang.label}
@@ -88,13 +88,28 @@ export function Navbar() {
               ))}
             </div>
 
-            {/* Theme Toggle */}
+            {/* Theme Toggle with smooth animation */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-300 card-glow"
               aria-label="Toggle theme"
             >
-              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+              <div className="relative w-5 h-5">
+                <Sun 
+                  size={20} 
+                  className={cn(
+                    "absolute inset-0 transition-all duration-300",
+                    theme === "dark" ? "opacity-100 rotate-0" : "opacity-0 rotate-90"
+                  )} 
+                />
+                <Moon 
+                  size={20} 
+                  className={cn(
+                    "absolute inset-0 transition-all duration-300",
+                    theme === "light" ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
+                  )} 
+                />
+              </div>
             </button>
           </div>
 
@@ -103,14 +118,14 @@ export function Navbar() {
             {/* Theme Toggle Mobile */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
               aria-label="Toggle menu"
             >
               {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -121,17 +136,17 @@ export function Navbar() {
         {/* Mobile Navigation */}
         <div
           className={cn(
-            "md:hidden overflow-hidden transition-all duration-300",
+            "md:hidden overflow-hidden transition-all duration-300 bg-card/95 backdrop-blur-md rounded-b-xl",
             isOpen ? "max-h-96 pb-4" : "max-h-0"
           )}
         >
-          <ul className="flex flex-col gap-2">
+          <ul className="flex flex-col gap-2 px-2">
             {navLinks.map((link) => (
               <li key={link.key}>
                 <a
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
+                  className="block py-2 px-3 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
                 >
                   {t.nav[link.key as keyof typeof t.nav]}
                 </a>
@@ -140,17 +155,17 @@ export function Navbar() {
           </ul>
 
           {/* Mobile Language Switcher */}
-          <div className="flex items-center gap-1 mt-4 text-sm border border-border rounded-md overflow-hidden w-fit">
+          <div className="flex items-center gap-1 mt-4 mx-2 text-sm border border-border rounded-lg overflow-hidden w-fit">
             {languages.map((lang, index) => (
               <button
                 key={lang.code}
                 onClick={() => setLanguage(lang.code)}
                 className={cn(
-                  "px-3 py-2 transition-colors",
+                  "px-4 py-2 transition-all duration-300",
                   language === lang.code
-                    ? "bg-primary text-primary-foreground"
+                    ? "btn-gradient text-white"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted",
-                  index !== languages.length - 1 && "border-r border-border"
+                  index !== languages.length - 1 && language !== lang.code && "border-r border-border"
                 )}
               >
                 {lang.label}

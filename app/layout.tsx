@@ -1,18 +1,18 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Inter, Fira_Code } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { ThemeProvider } from '@/lib/theme-context'
 import { LanguageProvider } from '@/lib/language-context'
 import './globals.css'
 
-const geist = Geist({ 
+const inter = Inter({ 
   subsets: ["latin"],
-  variable: '--font-geist-sans',
+  variable: '--font-inter',
 })
 
-const geistMono = Geist_Mono({ 
+const firaCode = Fira_Code({ 
   subsets: ["latin"],
-  variable: '--font-geist-mono',
+  variable: '--font-fira-code',
 })
 
 export const metadata: Metadata = {
@@ -41,8 +41,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#f8fafc' },
-    { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
+    { media: '(prefers-color-scheme: light)', color: '#F8FAFF' },
+    { media: '(prefers-color-scheme: dark)', color: '#020617' },
   ],
   width: 'device-width',
   initialScale: 1,
@@ -55,7 +55,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geist.variable} ${geistMono.variable} font-sans antialiased`}>
+      <body className={`${inter.variable} ${firaCode.variable} font-sans antialiased`}>
         <ThemeProvider>
           <LanguageProvider>
             {children}

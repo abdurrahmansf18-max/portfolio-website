@@ -10,33 +10,41 @@ export function AboutSection() {
   const highlights = [
     {
       icon: MapPin,
-      label: isRTL ? "أنقرة، تركيا" : "Ankara, Türkiye",
+      label: isRTL ? "أنقرة، تركيا" : "Ankara, Turkiye",
+      gradient: "from-[#6366F1] to-[#22D3EE]",
     },
     {
       icon: GraduationCap,
       label: isRTL
         ? "جامعة أوستيم التقنية"
         : "Ostim Technical University",
+      gradient: "from-[#A855F7] to-[#F472B6]",
     },
     {
       icon: Briefcase,
       label: isRTL ? "شركة Rakort (تدريب 1 سنة)" : "Rakort (1 Year Internship)",
+      gradient: "from-[#22C55E] to-[#06B6D4]",
     },
   ]
 
   return (
-    <section id="about" className="py-20 md:py-32 relative">
+    <section id="about" className="py-20 md:py-32 relative overflow-hidden">
+      {/* Background gradient */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-1/2 left-0 w-[300px] h-[300px] bg-[var(--gradient-secondary-start)]/5 rounded-full blur-[100px]" />
+      </div>
+
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          {/* Section Title */}
+          {/* Section Title with gradient */}
           <div className="mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              {t.about.title}
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="text-gradient">{t.about.title}</span>
             </h2>
-            <div className="w-20 h-1 bg-primary rounded-full" />
+            <div className="w-20 h-1 bg-gradient-to-r from-[var(--gradient-primary-start)] to-[var(--gradient-primary-end)] rounded-full" />
           </div>
 
-          {/* Highlights */}
+          {/* Highlights with gradient icons */}
           <div
             className={cn(
               "flex flex-wrap gap-4 mb-10",
@@ -47,11 +55,16 @@ export function AboutSection() {
               <div
                 key={index}
                 className={cn(
-                  "inline-flex items-center gap-2 px-4 py-2 bg-muted/50 rounded-full border border-border text-sm",
+                  "inline-flex items-center gap-3 px-4 py-2.5 bg-card rounded-full border border-border text-sm card-glow",
                   isRTL && "flex-row-reverse"
                 )}
               >
-                <item.icon size={16} className="text-primary" />
+                <div className={cn(
+                  "p-1.5 rounded-full bg-gradient-to-br",
+                  item.gradient
+                )}>
+                  <item.icon size={14} className="text-white" />
+                </div>
                 <span className="text-muted-foreground">{item.label}</span>
               </div>
             ))}
@@ -69,16 +82,16 @@ export function AboutSection() {
             ))}
           </div>
 
-          {/* Project Link */}
-          <div className="mt-10 p-6 bg-muted/30 rounded-xl border border-border">
+          {/* Project Link with enhanced styling */}
+          <div className="mt-10 p-6 bg-card rounded-xl border border-border card-glow hover-scale">
             <div
               className={cn(
                 "flex items-start gap-4",
                 isRTL && "flex-row-reverse text-right"
               )}
             >
-              <div className="p-3 bg-primary/10 rounded-lg">
-                <ExternalLink size={24} className="text-primary" />
+              <div className="p-3 rounded-lg bg-gradient-to-br from-[var(--gradient-primary-start)] to-[var(--gradient-primary-end)]">
+                <ExternalLink size={24} className="text-white" />
               </div>
               <div className="flex-1">
                 <h3 className="text-lg font-semibold text-foreground mb-2">
@@ -94,12 +107,12 @@ export function AboutSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cn(
-                    "inline-flex items-center gap-2 text-primary hover:underline",
+                    "inline-flex items-center gap-2 text-gradient font-medium hover:opacity-80 transition-opacity",
                     isRTL && "flex-row-reverse"
                   )}
                 >
                   ergunnakliyatevdeneve.com
-                  <ExternalLink size={14} />
+                  <ExternalLink size={14} className="text-primary" />
                 </a>
               </div>
             </div>

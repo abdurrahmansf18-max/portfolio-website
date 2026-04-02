@@ -1,7 +1,7 @@
 "use client"
 
 import { useLanguage } from "@/lib/language-context"
-import { Github, Linkedin, Facebook, Mail } from "lucide-react"
+import { Github, Linkedin, Facebook, Mail, Heart } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const socialLinks = [
@@ -32,7 +32,12 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="py-12 border-t border-border bg-background">
+    <footer className="py-12 border-t border-border bg-card relative overflow-hidden">
+      {/* Subtle gradient decoration */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-gradient-to-t from-[var(--gradient-primary-start)]/5 to-transparent blur-[80px]" />
+      </div>
+
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div
@@ -41,9 +46,9 @@ export function Footer() {
               isRTL && "md:flex-row-reverse"
             )}
           >
-            {/* Brand */}
+            {/* Brand with gradient */}
             <div className={cn("text-center md:text-left", isRTL && "md:text-right")}>
-              <h3 className="text-xl font-bold text-foreground">
+              <h3 className="text-xl font-bold text-gradient">
                 Abdurrahman El Savvaf
               </h3>
               <p className="text-sm text-muted-foreground mt-1">
@@ -51,7 +56,7 @@ export function Footer() {
               </p>
             </div>
 
-            {/* Social Links */}
+            {/* Social Links with hover effects */}
             <div className={cn("flex items-center gap-4", isRTL && "flex-row-reverse")}>
               {socialLinks.map((social) => (
                 <a
@@ -59,7 +64,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+                  className="p-2.5 rounded-lg text-muted-foreground hover:text-primary hover:bg-muted transition-all duration-300 card-glow"
                   aria-label={social.label}
                 >
                   <social.icon size={20} />
@@ -68,10 +73,13 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Copyright */}
+          {/* Copyright with heart */}
           <div className="mt-8 pt-6 border-t border-border text-center">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground inline-flex items-center gap-1.5 justify-center flex-wrap">
               &copy; {currentYear} Abdurrahman El Savvaf. {t.footer.rights}.
+              <span className="inline-flex items-center gap-1">
+                Built with <Heart size={14} className="text-primary fill-primary animate-pulse" />
+              </span>
             </p>
           </div>
         </div>
