@@ -3,65 +3,65 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Light Mode - Clean and Colorful */
+/* Light Mode - Clean Light Blue/Cyan Theme like Nawar Hasan */
 :root {
-  --background: #F8FAFF;
+  --background: #F0F9FF;
   --foreground: #0F172A;
   --card: #FFFFFF;
   --card-foreground: #0F172A;
   --popover: #FFFFFF;
   --popover-foreground: #0F172A;
-  --primary: #4F46E5;
+  --primary: #06B6D4;
   --primary-foreground: #FFFFFF;
-  --secondary: #7C3AED;
+  --secondary: #0EA5E9;
   --secondary-foreground: #FFFFFF;
-  --muted: #F1F5F9;
-  --muted-foreground: #64748B;
-  --accent: #22C55E;
+  --muted: #E0F2FE;
+  --muted-foreground: #475569;
+  --accent: #22D3EE;
   --accent-foreground: #FFFFFF;
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
-  --border: #E2E8F0;
-  --input: #E2E8F0;
-  --ring: #4F46E5;
+  --border: #BAE6FD;
+  --input: #E0F2FE;
+  --ring: #06B6D4;
   --radius: 0.625rem;
   
-  /* Gradient colors */
-  --gradient-primary-start: #4F46E5;
-  --gradient-primary-end: #06B6D4;
-  --gradient-secondary-start: #7C3AED;
-  --gradient-secondary-end: #EC4899;
-  --glow-color: rgba(79, 70, 229, 0.15);
+  /* Gradient colors - Cyan theme */
+  --gradient-primary-start: #06B6D4;
+  --gradient-primary-end: #0EA5E9;
+  --gradient-secondary-start: #22D3EE;
+  --gradient-secondary-end: #38BDF8;
+  --glow-color: rgba(6, 182, 212, 0.2);
 }
 
-/* Dark Mode - Powerful Neon Look */
+/* Dark Mode - Deep blue with cyan accents */
 .dark {
   --background: #020617;
-  --foreground: #F8FAFC;
-  --card: #0B1120;
-  --card-foreground: #F8FAFC;
-  --popover: #0B1120;
-  --popover-foreground: #F8FAFC;
-  --primary: #6366F1;
+  --foreground: #F1F5F9;
+  --card: #0F172A;
+  --card-foreground: #F1F5F9;
+  --popover: #0F172A;
+  --popover-foreground: #F1F5F9;
+  --primary: #22D3EE;
   --primary-foreground: #020617;
-  --secondary: #A855F7;
+  --secondary: #06B6D4;
   --secondary-foreground: #020617;
   --muted: #1E293B;
   --muted-foreground: #94A3B8;
-  --accent: #4ADE80;
+  --accent: #38BDF8;
   --accent-foreground: #020617;
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
   --border: #1E293B;
   --input: #1E293B;
-  --ring: #6366F1;
+  --ring: #22D3EE;
   
   /* Gradient colors */
-  --gradient-primary-start: #6366F1;
-  --gradient-primary-end: #22D3EE;
-  --gradient-secondary-start: #A855F7;
-  --gradient-secondary-end: #F472B6;
-  --glow-color: rgba(99, 102, 241, 0.35);
+  --gradient-primary-start: #22D3EE;
+  --gradient-primary-end: #06B6D4;
+  --gradient-secondary-start: #38BDF8;
+  --gradient-secondary-end: #0EA5E9;
+  --glow-color: rgba(34, 211, 238, 0.3);
 }
 
 @theme inline {
@@ -239,10 +239,10 @@
 
 .btn-gradient-secondary:hover {
   background: linear-gradient(135deg, var(--gradient-secondary-end), var(--gradient-secondary-start));
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.35);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.35);
 }
 
-/* Text gradient */
+/* Text gradient - Cyan theme */
 .text-gradient {
   background: linear-gradient(135deg, var(--gradient-primary-start), var(--gradient-primary-end));
   -webkit-background-clip: text;

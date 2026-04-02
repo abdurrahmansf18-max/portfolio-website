@@ -17,7 +17,7 @@ const skillCategories = [
     key: "backend",
     icon: Server,
     skills: ["Python", "FastAPI", "C#", ".NET Core 8", "RESTful API"],
-    gradient: "from-[#6366F1] to-[#22D3EE]",
+    gradient: "from-[#06B6D4] to-[#0284C7]",
   },
   {
     key: "frontend",
@@ -32,31 +32,31 @@ const skillCategories = [
       "Next.js",
       "Node.js",
     ],
-    gradient: "from-[#A855F7] to-[#F472B6]",
+    gradient: "from-[#0EA5E9] to-[#06B6D4]",
   },
   {
     key: "devops",
     icon: Cloud,
     skills: ["VPS", "VDS", "Dedicated Servers", "Docker", "Cloudflare"],
-    gradient: "from-[#22C55E] to-[#06B6D4]",
+    gradient: "from-[#22D3EE] to-[#0EA5E9]",
   },
   {
     key: "databases",
     icon: Database,
     skills: ["PostgreSQL", "MongoDB", "Firebase"],
-    gradient: "from-[#F59E0B] to-[#EF4444]",
+    gradient: "from-[#38BDF8] to-[#22D3EE]",
   },
   {
     key: "tools",
     icon: Wrench,
     skills: ["Git", "GitHub", "Postman", "Swagger", "Figma"],
-    gradient: "from-[#6366F1] to-[#A855F7]",
+    gradient: "from-[#0284C7] to-[#0369A1]",
   },
   {
     key: "languages",
     icon: Code,
     skills: ["C++", "C"],
-    gradient: "from-[#EC4899] to-[#F472B6]",
+    gradient: "from-[#06B6D4] to-[#22D3EE]",
   },
 ]
 
@@ -135,7 +135,7 @@ export function SkillsSection() {
                   isRTL && "flex-row-reverse"
                 )}
               >
-                <div className="p-2.5 rounded-lg bg-gradient-to-br from-[#4ADE80] to-[#22D3EE] opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
+                <div className="p-2.5 rounded-lg bg-gradient-to-br from-[#22D3EE] to-[#38BDF8] opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
                   <Languages size={20} className="text-white" />
                 </div>
                 <h3 className="text-lg font-semibold text-foreground">

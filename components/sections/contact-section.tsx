@@ -19,21 +19,21 @@ const contactInfo = [
     key: "phone",
     value: "+90 539 738 94 76",
     href: "tel:+905397389476",
-    gradient: "from-[#6366F1] to-[#22D3EE]",
+    gradient: "from-[#06B6D4] to-[#0EA5E9]",
   },
   {
     icon: Mail,
     key: "email",
     value: "abdurrahmansf18@gmail.com",
     href: "mailto:abdurrahmansf18@gmail.com",
-    gradient: "from-[#A855F7] to-[#F472B6]",
+    gradient: "from-[#0EA5E9] to-[#22D3EE]",
   },
   {
     icon: MapPin,
     key: "location",
     value: "Ankara, Turkiye",
     href: null,
-    gradient: "from-[#22C55E] to-[#06B6D4]",
+    gradient: "from-[#22D3EE] to-[#38BDF8]",
   },
 ]
 

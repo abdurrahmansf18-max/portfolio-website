@@ -11,17 +11,17 @@ export function AboutSection() {
     {
       icon: MapPin,
       label: t.about.location,
-      gradient: "from-[#6366F1] to-[#22D3EE]",
+      gradient: "from-[#06B6D4] to-[#0EA5E9]",
     },
     {
       icon: GraduationCap,
       label: t.about.education,
-      gradient: "from-[#A855F7] to-[#F472B6]",
+      gradient: "from-[#0EA5E9] to-[#22D3EE]",
     },
     {
       icon: Briefcase,
       label: t.about.experience,
-      gradient: "from-[#22C55E] to-[#06B6D4]",
+      gradient: "from-[#22D3EE] to-[#38BDF8]",
     },
   ]
 
