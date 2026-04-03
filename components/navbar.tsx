@@ -3,9 +3,10 @@
 import { useState, useEffect } from "react"
 import { useLanguage } from "@/lib/language-context"
 import { useTheme } from "@/lib/theme-context"
-import { Menu, X, Moon, Sun } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import type { Language } from "@/lib/translations"
+import { PersonalLogo } from "@/components/logo"
 
 const navLinks = [
   { key: "home", href: "#home" },
@@ -15,9 +16,59 @@ const navLinks = [
   { key: "contact", href: "#contact" },
 ] as const
 
+const logoNamesByLanguage: Record<Language, string> = {
+  tr: "ABDURRAHMAN EL ŞAVVAF",
+  en: "ABDURRAHMAN EL SHAWAF",
+  ar: "عبد الرحمن الشواف",
+}
+
+const TypewriterLogo = ({ language }: { language: Language }) => {
+  const fullText = logoNamesByLanguage[language]
+  const [currentName, setCurrentName] = useState("")
+  const [isDeleting, setIsDeleting] = useState(false)
+
+  useEffect(() => {
+    setCurrentName("")
+    setIsDeleting(false)
+  }, [language])
+
+  useEffect(() => {
+    let typingSpeed = isDeleting ? 50 : 100
+
+    if (!isDeleting && currentName === fullText) {
+      typingSpeed = 2000 // Yazdıktan sonra bekleme
+    } else if (isDeleting && currentName === "") {
+      typingSpeed = 500 // Sildikten sonra bekleme
+    }
+
+    const timer = setTimeout(() => {
+      if (!isDeleting && currentName === fullText) {
+        setIsDeleting(true)
+      } else if (isDeleting && currentName === "") {
+        setIsDeleting(false)
+      } else {
+        setCurrentName(fullText.substring(0, currentName.length + (isDeleting ? -1 : 1)))
+      }
+    }, typingSpeed)
+
+    return () => clearTimeout(timer)
+  }, [currentName, isDeleting, fullText])
+
+  return (
+    <a
+      href="#home"
+      className="text-[15px] sm:text-lg md:text-xl font-bold text-gradient hover:opacity-80 transition-opacity min-w-fit flex items-center gap-1.5"
+      dir={language === "ar" ? "rtl" : "ltr"}
+    >
+      <PersonalLogo />
+      {currentName}
+      <span className={cn("animate-pulse text-foreground", language === "ar" ? "mr-0.5" : "ml-0.5")}>|</span>
+    </a>
+  )
+}
+
 export function Navbar() {
   const { language, setLanguage, t, isRTL } = useLanguage()
-  const { theme, toggleTheme } = useTheme()
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
@@ -47,12 +98,7 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo with gradient */}
-          <a
-            href="#home"
-            className="text-xl font-bold text-gradient hover:opacity-80 transition-opacity"
-          >
-            AES
-          </a>
+          <TypewriterLogo language={language} />
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -88,41 +134,10 @@ export function Navbar() {
               ))}
             </div>
 
-            {/* Theme Toggle with smooth animation */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-300 card-glow"
-              aria-label="Toggle theme"
-            >
-              <div className="relative w-5 h-5">
-                <Sun 
-                  size={20} 
-                  className={cn(
-                    "absolute inset-0 transition-all duration-300",
-                    theme === "dark" ? "opacity-100 rotate-0" : "opacity-0 rotate-90"
-                  )} 
-                />
-                <Moon 
-                  size={20} 
-                  className={cn(
-                    "absolute inset-0 transition-all duration-300",
-                    theme === "light" ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
-                  )} 
-                />
-              </div>
-            </button>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex md:hidden items-center gap-2">
-            {/* Theme Toggle Mobile */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"

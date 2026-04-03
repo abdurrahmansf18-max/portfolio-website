@@ -20,7 +20,7 @@ export const translations = {
       contactMe: "Get In Touch",
       downloadCV: "Download CV",
       viewProjects: "View My Work",
-      typingTexts: ["Full Stack Developer", "Backend Engineer", "Frontend Developer", "Problem Solver"],
+      typingTexts: ["Full Stack Engineer", "Scalable System Builder", "Secure API Architect", "Product-Focused Problem Solver"],
     },
     // Stats
     stats: {
@@ -31,15 +31,26 @@ export const translations = {
     // About Section
     about: {
       title: "About Me",
-      bio: `I'm a passionate Software Engineer and Full Stack Developer currently living in Ankara, Turkiye. Originally from Syria, I graduated with a degree in Software Engineering from Ostim Technical University.
+      bio: `Software Engineering graduate focused on full-stack web development. I build modern and scalable applications with a practical, project-driven mindset.
 
-Throughout my career, I have worked as a Full Stack Developer, gaining hands-on experience in both backend and frontend development, as well as server management. I completed a 1-year internship at Rakort company, where I honed my skills in real-world projects.
+I have hands-on experience with FastAPI, .NET Core, React, PostgreSQL, Docker, and VPS deployment. I enjoy designing clean APIs, building maintainable systems, and delivering complete solutions from backend to frontend.
 
-I have also developed and sold a professional website for a real client: ergunnakliyatevdeneve.com, demonstrating my ability to deliver production-ready solutions.
-
-When I'm not coding, I enjoy learning new technologies and working on freelance projects that challenge me to grow.`,
+I work effectively both independently and in teams, with strong problem-solving skills and a focus on turning real client requirements into production-ready products.`,
+      internship: {
+        title: "Internship Experience",
+        company: "Rakort - Software Engineering Intern (2024-07-01 - 2025-07-01)",
+        summary:
+          "Completed a long-term internship at a technology-focused company delivering software and digital solutions.",
+        whatWeDoTitle: "What They Do",
+        whatWeDo:
+          "Contributed to full-stack development tasks using FastAPI, .NET Core, React, and PostgreSQL within a professional team environment.",
+        productsTitle: "Product Vision",
+        products:
+          "Gained practical experience in scalable architecture, modern development workflows, and deployment strategies.",
+        websiteLabel: "Visit Rakort",
+      },
       location: "Ankara, Turkiye",
-      education: "Ostim Technical University",
+      education: "Ostim Technical University (Graduate)",
       experience: "Rakort (1 Year Internship)",
       realProject: "Real Client Project",
       realProjectDesc: "Developed and sold a professional website for a real client",
@@ -69,6 +80,8 @@ When I'm not coding, I enjoy learning new technologies and working on freelance 
       viewCode: "Source Code",
       technologies: "Technologies:",
       keyFeatures: "Key Features:",
+      gallery: "Project Screenshots",
+      swipeHint: "Swipe right to view more screenshots",
     },
     // Contact Section
     contact: {
@@ -116,7 +129,7 @@ When I'm not coding, I enjoy learning new technologies and working on freelance 
       contactMe: "İletişime Geç",
       downloadCV: "CV İndir",
       viewProjects: "Çalışmalarımı Gör",
-      typingTexts: ["Full Stack Geliştirici", "Backend Mühendisi", "Frontend Geliştirici", "Problem Çözücü"],
+      typingTexts: ["Full Stack Yazılım Mühendisi", "Ölçeklenebilir Sistem Geliştirici", "Güvenli API Mimarisi Uzmanı", "Ürün Odaklı Problem Çözücü"],
     },
     // Stats
     stats: {
@@ -127,15 +140,26 @@ When I'm not coding, I enjoy learning new technologies and working on freelance 
     // About Section
     about: {
       title: "Hakkımda",
-      bio: `Şu anda Ankara, Türkiye'de yaşayan tutkulu bir Yazılım Mühendisi ve Full Stack Geliştiriciyim. Suriye kökenli olup, Ostim Teknik Üniversitesi'nden Yazılım Mühendisliği diploması ile mezun oldum.
+      bio: `Web tabanlı full-stack geliştirmeye odaklanan motive bir Yazılım Mühendisliği mezunuyum. Modern ve ölçeklenebilir uygulamalar geliştirirken gerçek proje deneyimini merkeze alıyorum.
 
-Kariyerim boyunca Full Stack Geliştirici olarak çalışarak hem backend hem de frontend geliştirme ile sunucu yönetimi konularında uygulamalı deneyim kazandım. Rakort şirketinde 1 yıllık staj programını tamamladım ve gerçek dünya projelerinde becerilerimi geliştirdim.
+FastAPI, .NET Core, React, PostgreSQL, Docker ve VPS dağıtımı konularında uygulamalı deneyime sahibim. Temiz API tasarımı, sürdürülebilir mimari ve uçtan uca çözüm üretimi benim temel çalışma yaklaşımımdır.
 
-Ayrıca gerçek bir müşteri için profesyonel bir web sitesi geliştirdim ve sattım: ergunnakliyatevdeneve.com, bu da üretime hazır çözümler sunma yeteneğimi göstermektedir.
-
-Kod yazmadığım zamanlarda, yeni teknolojiler öğrenmekten ve beni geliştiren freelance projeler üzerinde çalışmaktan keyif alıyorum.`,
+Hem bireysel hem ekip çalışmalarında etkili şekilde görev alır, güçlü problem çözme becerileriyle müşteri ihtiyaçlarını üretime hazır ürünlere dönüştürürüm.`,
+      internship: {
+        title: "Staj Deneyimi",
+        company: "Rakort - Yazılım Mühendisliği Stajyeri (2024-07-01 - 2025-07-01)",
+        summary:
+          "Yazılım geliştirme ve dijital çözümler üreten teknoloji odaklı bir şirkette uzun dönem staj deneyimi edindim.",
+        whatWeDoTitle: "Neler Yapıyor",
+        whatWeDo:
+          "FastAPI, .NET Core, React ve PostgreSQL kullanarak full-stack geliştirme görevlerinde aktif rol aldım ve profesyonel ekip sürecine katkı sundum.",
+        productsTitle: "Ürün Vizyonu",
+        products:
+          "Ölçeklenebilir mimari, modern geliştirme akışları ve dağıtım süreçlerinde pratik tecrübe kazandım.",
+        websiteLabel: "Rakort'u Ziyaret Et",
+      },
       location: "Ankara, Türkiye",
-      education: "Ostim Teknik Üniversitesi",
+      education: "Ostim Teknik Üniversitesi (Mezun)",
       experience: "Rakort (1 Yıllık Staj)",
       realProject: "Gerçek Müşteri Projesi",
       realProjectDesc: "Gerçek bir müşteri için profesyonel bir web sitesi geliştirdim ve sattım",
@@ -165,6 +189,8 @@ Kod yazmadığım zamanlarda, yeni teknolojiler öğrenmekten ve beni geliştire
       viewCode: "Kaynak Kod",
       technologies: "Teknolojiler:",
       keyFeatures: "Temel Özellikler:",
+      gallery: "Proje Görselleri",
+      swipeHint: "Daha fazla görsel için sağa kaydırın",
     },
     // Contact Section
     contact: {
@@ -212,7 +238,7 @@ Kod yazmadığım zamanlarda, yeni teknolojiler öğrenmekten ve beni geliştire
       contactMe: "تواصل معي",
       downloadCV: "تحميل السيرة الذاتية",
       viewProjects: "عرض أعمالي",
-      typingTexts: ["مطور Full Stack", "مهندس Backend", "مطور Frontend", "حلّال مشاكل"],
+      typingTexts: ["مهندس برمجيات Full Stack", "مطور أنظمة قابلة للتوسع", "مهندس واجهات برمجة آمنة", "حلّال مشاكل يركز على المنتج"],
     },
     // Stats
     stats: {
@@ -223,15 +249,26 @@ Kod yazmadığım zamanlarda, yeni teknolojiler öğrenmekten ve beni geliştire
     // About Section
     about: {
       title: "عني",
-      bio: `أنا مهندس برمجيات ومطور Full Stack شغوف أعيش حالياً في أنقرة، تركيا. سوري الأصل، تخرجت بدرجة في هندسة البرمجيات من جامعة أوستيم التقنية.
+      bio: `خريج هندسة برمجيات ومتخصص في تطوير تطبيقات الويب Full Stack. أعمل على بناء تطبيقات حديثة وقابلة للتوسع مع تركيز قوي على المشاريع الواقعية.
 
-طوال مسيرتي المهنية، عملت كمطور Full Stack، واكتسبت خبرة عملية في تطوير الواجهة الخلفية والأمامية، بالإضافة إلى إدارة الخوادم. أكملت تدريباً لمدة عام في شركة Rakort، حيث صقلت مهاراتي في المشاريع الحقيقية.
+أمتلك خبرة عملية في FastAPI و .NET Core و React و PostgreSQL و Docker وإدارة النشر على VPS. أهتم بتصميم واجهات API نظيفة وبناء أنظمة قابلة للصيانة من الواجهة الخلفية إلى الأمامية.
 
-كما قمت بتطوير وبيع موقع ويب احترافي لعميل حقيقي: ergunnakliyatevdeneve.com، مما يدل على قدرتي على تقديم حلول جاهزة للإنتاج.
-
-عندما لا أكتب الكود، أستمتع بتعلم التقنيات الجديدة والعمل على مشاريع حرة تتحداني للنمو.`,
+أعمل بكفاءة بشكل مستقل وضمن فريق، مع مهارات قوية في حل المشكلات وتحويل متطلبات العملاء إلى حلول جاهزة للإنتاج.`,
+      internship: {
+        title: "خبرة التدريب",
+        company: "Rakort - متدرب هندسة برمجيات (2024-07-01 - 2025-07-01)",
+        summary:
+          "أكملت تدريباً طويل المدى في شركة تقنية تقدم حلولاً برمجية ورقمية لعملاء فعليين.",
+        whatWeDoTitle: "ماذا يفعلون",
+        whatWeDo:
+          "ساهمت في مهام تطوير Full Stack باستخدام FastAPI و .NET Core و React و PostgreSQL ضمن بيئة عمل احترافية.",
+        productsTitle: "رؤية المنتجات",
+        products:
+          "اكتسبت خبرة عملية في المعمارية القابلة للتوسع، وسير العمل الحديثة، واستراتيجيات النشر والصيانة.",
+        websiteLabel: "زيارة Rakort",
+      },
       location: "أنقرة، تركيا",
-      education: "جامعة أوستيم التقنية",
+      education: "جامعة أوستيم التقنية (خريج)",
       experience: "Rakort (تدريب 1 سنة)",
       realProject: "مشروع عميل حقيقي",
       realProjectDesc: "قمت بتطوير وبيع موقع ويب احترافي لعميل حقيقي",
@@ -261,6 +298,8 @@ Kod yazmadığım zamanlarda, yeni teknolojiler öğrenmekten ve beni geliştire
       viewCode: "الكود المصدري",
       technologies: "التقنيات:",
       keyFeatures: "الميزات الرئيسية:",
+      gallery: "صور المشروع",
+      swipeHint: "اسحب إلى اليمين لمشاهدة المزيد من الصور",
     },
     // Contact Section
     contact: {

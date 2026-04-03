@@ -28,8 +28,8 @@ const socialLinks = [
 ]
 
 export function Footer() {
-  const { t, isRTL } = useLanguage()
-  const currentYear = new Date().getFullYear()
+  const { t, language, isRTL } = useLanguage()
+  const currentYear = 2024
 
   return (
     <footer className="py-12 border-t border-border bg-card relative overflow-hidden">
@@ -64,10 +64,15 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-lg text-muted-foreground hover:text-primary hover:bg-muted transition-all duration-300 card-glow"
+                  className="group relative w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center shrink-0 hover:scale-110 transition-transform duration-300"
                   aria-label={social.label}
                 >
-                  <social.icon size={20} />
+                  {/* Rotating line */}
+                  <div className="absolute inset-[-100%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_270deg,#06B6D4_360deg)] group-hover:bg-[conic-gradient(from_0deg,transparent_0_270deg,#fff_360deg)] transition-all duration-300" />
+                  {/* Inner background */}
+                  <div className="absolute inset-[2px] rounded-[10px] bg-card flex items-center justify-center z-10 text-muted-foreground group-hover:text-primary transition-colors duration-300">
+                    <social.icon size={18} />
+                  </div>
                 </a>
               ))}
             </div>
@@ -77,8 +82,14 @@ export function Footer() {
           <div className="mt-8 pt-6 border-t border-border text-center">
             <p className="text-sm text-muted-foreground inline-flex items-center gap-1.5 justify-center flex-wrap">
               &copy; {currentYear} {isRTL ? "عبد الرحمن الشواف" : "Abdurrahman El Savvaf"}. {t.footer.rights}.
-              <span className="inline-flex items-center gap-1">
-                Built with <Heart size={14} className="text-primary fill-primary animate-pulse" />
+              <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded-full bg-card border border-border">
+                {language === "tr" ? (
+                  <>sevgiyle <Heart size={14} className="text-red-500 fill-red-500 animate-pulse" /> kodlandı</>
+                ) : language === "ar" ? (
+                  <>صُنع بـ <Heart size={14} className="text-red-500 fill-red-500 animate-pulse" /></>
+                ) : (
+                  <>Built with <Heart size={14} className="text-red-500 fill-red-500 animate-pulse" /></>
+                )}
               </span>
             </p>
           </div>

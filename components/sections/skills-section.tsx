@@ -12,6 +12,37 @@ import {
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
+const skillLinks: Record<string, string> = {
+  Python: "https://www.python.org/",
+  FastAPI: "https://fastapi.tiangolo.com/",
+  "C#": "https://learn.microsoft.com/dotnet/csharp/",
+  ".NET Core 8": "https://dotnet.microsoft.com/en-us/download/dotnet/8.0",
+  "RESTful API": "https://restfulapi.net/",
+  React: "https://react.dev/",
+  TypeScript: "https://www.typescriptlang.org/",
+  JavaScript: "https://developer.mozilla.org/docs/Web/JavaScript",
+  HTML: "https://developer.mozilla.org/docs/Web/HTML",
+  CSS: "https://developer.mozilla.org/docs/Web/CSS",
+  "Tailwind CSS": "https://tailwindcss.com/",
+  "Next.js": "https://nextjs.org/",
+  "Node.js": "https://nodejs.org/",
+  VPS: "https://en.wikipedia.org/wiki/Virtual_private_server",
+  VDS: "https://en.wikipedia.org/wiki/Virtual_dedicated_server",
+  "Dedicated Servers": "https://en.wikipedia.org/wiki/Dedicated_hosting_service",
+  Docker: "https://www.docker.com/",
+  Cloudflare: "https://www.cloudflare.com/",
+  PostgreSQL: "https://www.postgresql.org/",
+  MongoDB: "https://www.mongodb.com/",
+  Firebase: "https://firebase.google.com/",
+  Git: "https://git-scm.com/",
+  GitHub: "https://github.com/",
+  Postman: "https://www.postman.com/",
+  Swagger: "https://swagger.io/",
+  Figma: "https://www.figma.com/",
+  "C++": "https://isocpp.org/",
+  C: "https://en.wikipedia.org/wiki/C_(programming_language)",
+}
+
 const skillCategories = [
   {
     key: "backend",
@@ -64,7 +95,7 @@ export function SkillsSection() {
   const { t, isRTL } = useLanguage()
 
   return (
-    <section id="skills" className="py-20 md:py-32 relative overflow-hidden">
+    <section id="skills" className="py-16 sm:py-20 md:py-32 relative overflow-hidden">
       {/* Background gradient decoration */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[var(--gradient-primary-start)]/5 rounded-full blur-[100px]" />
@@ -85,11 +116,11 @@ export function SkillsSection() {
           </div>
 
           {/* Skills Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {skillCategories.map((category, index) => (
               <div
                 key={category.key}
-                className="p-6 bg-card rounded-xl border border-border card-glow hover-scale group"
+                className="p-4 sm:p-6 bg-card rounded-xl border border-border card-glow hover-scale group"
               >
                 <div
                   className={cn(
@@ -115,20 +146,29 @@ export function SkillsSection() {
                 <div
                   className={cn("flex flex-wrap gap-2", isRTL && "justify-end")}
                 >
-                  {category.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1.5 bg-muted text-sm text-muted-foreground rounded-lg border border-border skill-tag cursor-default"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                  {category.skills.map((skill) => {
+                    const href = skillLinks[skill]
+
+                    return (
+                      <a
+                        key={skill}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-3 sm:px-4 py-2 sm:py-1.5 bg-muted text-xs sm:text-sm text-muted-foreground rounded-lg border border-border skill-tag hover:text-foreground hover:border-primary/50 hover:bg-card transition-all duration-300"
+                        aria-label={`${skill} resmi sayfasi`}
+                        title={`${skill} - resmi sayfayi ac`}
+                      >
+                        {skill}
+                      </a>
+                    )
+                  })}
                 </div>
               </div>
             ))}
 
             {/* Spoken Languages Card */}
-            <div className="p-6 bg-card rounded-xl border border-border card-glow hover-scale group">
+            <div className="p-4 sm:p-6 bg-card rounded-xl border border-border card-glow hover-scale group">
               <div
                 className={cn(
                   "flex items-center gap-3 mb-4",

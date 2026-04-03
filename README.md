@@ -24,6 +24,51 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+## Contact Form Setup (SMTP)
+
+The contact form is connected to `POST /api/contact` and sends email using SMTP.
+
+1. Copy `.env.example` to `.env.local`.
+2. Fill these variables in `.env.local`:
+
+```bash
+SMTP_HOST=
+SMTP_PORT=587
+SMTP_USER=
+SMTP_PASS=
+SMTP_FROM=
+CONTACT_RECEIVER_EMAIL=
+```
+
+3. Restart the dev server after changing env values.
+
+When the form is submitted, the message is sent to `CONTACT_RECEIVER_EMAIL`.
+The sender email shown in your mailbox is `SMTP_USER`, and the user's email is set as `replyTo`.
+
+### Quick provider presets
+
+Brevo SMTP:
+
+```bash
+SMTP_HOST=smtp-relay.brevo.com
+SMTP_PORT=587
+SMTP_USER=your_brevo_user
+SMTP_PASS=your_brevo_pass
+SMTP_FROM=portfolio@your-domain.com
+CONTACT_RECEIVER_EMAIL=you@example.com
+```
+
+Gmail SMTP (requires App Password):
+
+```bash
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_USER=your_gmail@gmail.com
+SMTP_PASS=your_16_char_app_password
+SMTP_FROM=your_gmail@gmail.com
+CONTACT_RECEIVER_EMAIL=your_gmail@gmail.com
+```
+
 ## Learn More
 
 To learn more, take a look at the following resources:
