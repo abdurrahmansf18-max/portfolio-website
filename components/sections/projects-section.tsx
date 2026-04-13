@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
+import { useSearchParams } from "next/navigation"
 import { useLanguage } from "@/lib/language-context"
 import { ExternalLink, Github, FolderOpen } from "lucide-react"
 import Image from "next/image"
@@ -142,31 +143,61 @@ const projects: Project[] = [
 
 function ProjectCard({
   project,
+  projectNumber,
+  isHighlighted,
   onOpenImage,
 }: {
   project: Project
+  projectNumber: number
+  isHighlighted: boolean
   onOpenImage: (imagePath: string, title: string) => void
 }) {
   const { t, language, isRTL } = useLanguage()
+  const cardRef = useRef<HTMLDivElement>(null)
 
   const title = project.title[language]
   const kind = project.kind[language]
   const description = project.description[language]
   const features = project.features[language]
 
+  // Scroll into view and pulse when highlighted via URL
+  useEffect(() => {
+    if (isHighlighted && cardRef.current) {
+      const timer = setTimeout(() => {
+        cardRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })
+      }, 400)
+      return () => clearTimeout(timer)
+    }
+  }, [isHighlighted])
+
   return (
-    <div className="group relative overflow-hidden rounded-3xl border border-border/70 bg-card/95 shadow-[0_20px_60px_rgba(2,6,23,0.25)] transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_24px_80px_rgba(6,182,212,0.12)]">
+    <div
+      id={`project-${projectNumber}`}
+      ref={cardRef}
+      className={cn(
+        "group relative overflow-hidden rounded-3xl border bg-card/95 shadow-[0_20px_60px_rgba(2,6,23,0.25)] transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_24px_80px_rgba(6,182,212,0.12)]",
+        isHighlighted
+          ? "border-primary/60 shadow-[0_0_0_3px_rgba(6,182,212,0.25),0_20px_60px_rgba(2,6,23,0.25)] animate-highlight-pulse"
+          : "border-border/70"
+      )}
+    >
       <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[var(--gradient-primary-start)] via-[var(--gradient-secondary-start)] to-[var(--gradient-primary-end)] opacity-80" />
       <div className="absolute -top-24 right-[-4rem] h-40 w-40 rounded-full bg-[var(--gradient-primary-end)]/10 blur-3xl transition-transform duration-500 group-hover:scale-125" />
 
       {/* Project Header */}
       <div className="p-6 pb-4 sm:p-7 sm:pb-5">
-        <div className={cn("flex items-start justify-between gap-4 mb-4", isRTL && "flex-row-reverse")}> 
-          <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-muted/40 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
-            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-            {kind}
+        <div className={cn("flex items-start justify-between gap-4 mb-4", isRTL && "flex-row-reverse")}>
+          <div className="flex items-center gap-2 flex-wrap">
+            {/* Project Number Badge */}
+            <div className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-[var(--gradient-primary-start)] to-[var(--gradient-primary-end)] text-[11px] font-bold text-white shadow-[0_4px_12px_rgba(6,182,212,0.35)] shrink-0">
+              {projectNumber}
+            </div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-muted/40 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+              {kind}
+            </div>
           </div>
-          <div className="rounded-full border border-border/60 bg-background/60 px-3 py-1 text-[11px] font-medium text-muted-foreground">
+          <div className="rounded-full border border-border/60 bg-background/60 px-3 py-1 text-[11px] font-medium text-muted-foreground shrink-0">
             {project.images.length > 0 ? `${project.images.length} screenshots` : "Live site"}
           </div>
         </div>
@@ -262,6 +293,9 @@ function ProjectCard({
         "px-6 sm:px-7 py-4 bg-muted/35 border-t border-border/80 flex flex-wrap items-center gap-3",
         isRTL && "flex-row-reverse"
       )}>
+        {/* Copy Link Button */}
+        <CopyLinkButton projectNumber={projectNumber} />
+
         {project.liveUrl && (
           <a
             href={project.liveUrl}
@@ -289,9 +323,66 @@ function ProjectCard({
   )
 }
 
+function CopyLinkButton({ projectNumber }: { projectNumber: number }) {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = () => {
+    const url = `${window.location.origin}${window.location.pathname}?project=${projectNumber}`
+    navigator.clipboard.writeText(url).then(() => {
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    })
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={handleCopy}
+      className={cn(
+        "inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold border transition-all duration-300",
+        copied
+          ? "border-emerald-500/50 bg-emerald-500/10 text-emerald-400"
+          : "border-border/60 bg-background/60 text-muted-foreground hover:border-primary/30 hover:text-primary hover:bg-primary/5"
+      )}
+      title={`Copy link to Project #${projectNumber}`}
+    >
+      {copied ? (
+        <>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+          Copied!
+        </>
+      ) : (
+        <>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+          </svg>
+          #{projectNumber} Link
+        </>
+      )}
+    </button>
+  )
+}
+
 export function ProjectsSection() {
   const { t, isRTL } = useLanguage()
   const [lightbox, setLightbox] = useState<{ src: string; title: string } | null>(null)
+  const [mounted, setMounted] = useState(false)
+  const searchParams = useSearchParams()
+  const targetProject = searchParams ? Number(searchParams.get("project")) : null
+
+  // Fix hydration mismatch by waiting for mount
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return (
+      <section id="projects" className="py-20 md:py-32 relative overflow-hidden" />
+    )
+  }
 
   return (
     <section id="projects" className="py-20 md:py-32 relative overflow-hidden">
@@ -315,13 +406,18 @@ export function ProjectsSection() {
 
           {projects.length > 0 ? (
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-              {projects.map((project) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  onOpenImage={(src, title) => setLightbox({ src, title })}
-                />
-              ))}
+              {projects.map((project, index) => {
+                const projectNumber = index + 1
+                return (
+                  <ProjectCard
+                    key={project.id}
+                    project={project}
+                    projectNumber={projectNumber}
+                    isHighlighted={targetProject === projectNumber}
+                    onOpenImage={(src, title) => setLightbox({ src, title })}
+                  />
+                )
+              })}
             </div>
           ) : (
             /* Placeholder when no projects */
