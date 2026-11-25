@@ -1,7 +1,7 @@
 "use client"
 
 import { useLanguage } from "@/lib/language-context"
-import { Github, Linkedin, Mail, Phone, MessageCircle } from "lucide-react"
+import { Github, Mail, Phone, MessageCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const WHATSAPP_URL =
@@ -17,11 +17,6 @@ const socialLinks = [
     icon: Phone,
     label: "Telefon",
     href: "tel:+905397389476",
-  },
-  {
-    icon: Linkedin,
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/abdurrahman-el-%C5%9Favvaf-03208b3ab/",
   },
   {
     icon: Github,
@@ -52,7 +47,7 @@ export function Footer() {
             >
               <div className={cn("text-center md:text-left", isRTL && "md:text-right")}>
                 <h3 className="text-lg font-bold text-gradient">
-                  {isRTL ? "عبد الرحمن الشواف" : "Abdurrahman El Şavvaf"}
+                  {isRTL ? "عبد الرحمن رضوان" : "Abdurrahman Rıdvan"}
                 </h3>
                 <p className="text-sm text-muted-foreground mt-1">{t.footer.developer}</p>
               </div>
@@ -75,7 +70,7 @@ export function Footer() {
 
             <div className="mt-6 pt-5 border-t border-border text-center">
               <p className="text-xs sm:text-sm text-muted-foreground">
-                &copy; {currentYear} {isRTL ? "عبد الرحمن الشواف" : "Abdurrahman El Şavvaf"} · {t.footer.rights}.
+                &copy; {currentYear} {isRTL ? "عبد الرحمن رضوان" : "Abdurrahman Rıdvan"} · {t.footer.rights}.
               </p>
             </div>
           </div>

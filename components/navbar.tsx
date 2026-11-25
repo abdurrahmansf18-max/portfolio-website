@@ -19,9 +19,9 @@ const WHATSAPP_URL =
   "https://wa.me/905397389476?text=Merhaba%20Abdurrahman%20Bey%2C%20web%20sitesi%20ve%20yaz%C4%B1l%C4%B1m%20hizmetleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
 
 const logoNamesByLanguage: Record<Language, string> = {
-  tr: "ABDURRAHMAN EL ŞAVVAF",
-  en: "ABDURRAHMAN EL SAVVAF",
-  ar: "عبد الرحمن الشواف",
+  tr: "ABDURRAHMAN RIDVAN",
+  en: "ABDURRAHMAN RIDVAN",
+  ar: "عبد الرحمن رضوان",
 }
 
 export function Navbar() {

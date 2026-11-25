@@ -12,7 +12,7 @@ export const translations = {
     },
     hero: {
       badge: "Ankara Merkezli · Birebir Destek & Yüz Yüze Görüşme",
-      greeting: "Merhaba, Ben Abdurrahman El Şavvaf",
+      greeting: "Merhaba, Ben Abdurrahman Rıdvan",
       title: "İşletmenize Müşteri Kazandıran Web Siteleri ve Yazılım Çözümleri",
       description:
         "Google’da sizi arayan müşterilerin tek tıkla telefonunuza ve WhatsApp’ınıza ulaşmasını sağlayan hızlı, modern web siteleri kuruyorum. Peşin ödeme riski olmadan, önce taslağınızı görüyorsunuz; beğenirseniz yayına alıyoruz.",
@@ -110,7 +110,7 @@ export const translations = {
       title: "Ben Kimim?",
       subtitle: "Ankara’da İşletmeniz İçin Ulaşılabilir, Dürüst ve Uzun Vadeli Yazılım Ortağınız",
       cardRole: "Yazılım Mühendisi · Bağımsız Web & Yazılım Uzmanı",
-      bio: `Merhaba, ben Abdurrahman El Şavvaf. Ankara’da yaşayan, Ostim Teknik Üniversitesi Yazılım Mühendisliği eğitimi almış bağımsız bir yazılımcıyım.
+      bio: `Merhaba, ben Abdurrahman Rıdvan. Ankara’da yaşayan, Ostim Teknik Üniversitesi Yazılım Mühendisliği eğitimi almış bağımsız bir yazılımcıyım.
 
 Amacım tek seferlik site yapıp kaybolmak değil; Ankara’daki esnaf ve işletmelerle uzun yıllar sürecek güvene dayalı bir çalışma ilişkisi kurmak. Örneğin Ergun Nakliyat’ın web sitesini 1 yıldır kendi sunucumda barındırıyor ve her ihtiyaçlarında birebir destek veriyorum.
 
@@ -178,7 +178,7 @@ Büyük ajansların yüksek maliyetleri ve ulaşılamayan santralleri yerine; te
     },
     hero: {
       badge: "Based in Ankara · Direct Support & Face-to-Face Meetings",
-      greeting: "Hi, I’m Abdurrahman El Savvaf",
+      greeting: "Hi, I’m Abdurrahman Ridvan",
       title: "Websites and Software Solutions That Bring Real Customers",
       description:
         "I build fast, mobile-first websites that turn local Google searches into direct phone calls and WhatsApp inquiries. See a live preview tailored to your business first — pay only when you approve.",
@@ -275,7 +275,7 @@ Büyük ajansların yüksek maliyetleri ve ulaşılamayan santralleri yerine; te
       title: "About Me",
       subtitle: "Your Reliable, Long-Term Local Software Partner in Ankara",
       cardRole: "Software Engineer · Independent Web & Software Developer",
-      bio: `Hi, I’m Abdurrahman El Savvaf — an independent Software Engineering developer based in Ankara (Ostim Technical University).
+      bio: `Hi, I’m Abdurrahman Ridvan — an independent Software Engineering developer based in Ankara (Ostim Technical University).
 
 My goal isn’t to build a one-off website and disappear; I build lasting partnerships with local businesses. For example, I built and have hosted Ergun Nakliyat’s website on my own VPS for the past year with ongoing support.
 
@@ -343,7 +343,7 @@ Instead of expensive agencies and slow ticket queues, you get one reliable devel
     },
     hero: {
       badge: "مقيم في أنقرة · دعم مباشر وإمكانية اللقاء وجهاً لوجه",
-      greeting: "مرحباً، أنا عبد الرحمن الشواف",
+      greeting: "مرحباً، أنا عبد الرحمن رضوان",
       title: "مواقع ويب وحلول برمجية تجلب عملاء حقيقيين لعملك",
       description:
         "أصمم مواقع سريعة ومتوافقة مع الجوال تتيح لعملائك الاتصال بك أو طلب عرض سعر عبر واتساب بضغطة زر. ترى النموذج الخاص بعملك أولاً، وتدفع فقط عند الموافقة والتشغيل.",
@@ -439,7 +439,7 @@ Instead of expensive agencies and slow ticket queues, you get one reliable devel
       title: "من أنا؟",
       subtitle: "شريكك التقني الموثوق في أنقرة لعمل طويل الأمد",
       cardRole: "مهندس برمجيات · مطور مواقع وحلول رقمية مستقل",
-      bio: `مرحباً، أنا عبد الرحمن الشواف، مهندس برمجيات مستقل مقيم في أنقرة (جامعة أوستيم التقنية).
+      bio: `مرحباً، أنا عبد الرحمن رضوان، مهندس برمجيات مستقل مقيم في أنقرة (جامعة أوستيم التقنية).
 
 هدفي ليس تسليم موقع والاختفاء، بل بناء علاقة عمل طويلة الأمد قائمة على الثقة مع أصحاب الأعمال في أنقرة. على سبيل المثال، أدير وأستضيف موقع شركة Ergun Nakliyat منذ عام كامل مع متابعة مستمرة.
 

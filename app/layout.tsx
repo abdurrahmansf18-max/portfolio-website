@@ -16,7 +16,7 @@ const firaCode = Fira_Code({
 })
 
 export const metadata: Metadata = {
-  title: 'Abdurrahman El Şavvaf | İşletmeler İçin Web Sitesi ve Yazılım Çözümleri — Ankara',
+  title: 'Abdurrahman Rıdvan | İşletmeler İçin Web Sitesi ve Yazılım Çözümleri — Ankara',
   description:
     'Ankara merkezli bağımsız yazılımcı. İşletmenize müşteri kazandıran mobil uyumlu web siteleri, kendi sunucumda hızlı barındırma, özel yazılım ve birebir teknik destek.',
   keywords: [
@@ -24,24 +24,24 @@ export const metadata: Metadata = {
     'Çankaya Web Sitesi',
     'İşletme Web Sitesi',
     'Özel Yazılım Ankara',
-    'Abdurrahman El Şavvaf',
+    'Abdurrahman Rıdvan',
     'Full Stack Geliştirici',
     'Ankara',
     'Türkiye',
   ],
-  authors: [{ name: 'Abdurrahman El Şavvaf' }],
-  creator: 'Abdurrahman El Şavvaf',
+  authors: [{ name: 'Abdurrahman Rıdvan' }],
+  creator: 'Abdurrahman Rıdvan',
   openGraph: {
     type: 'website',
     locale: 'tr_TR',
-    title: 'Abdurrahman El Şavvaf | İşletmeler İçin Web Sitesi ve Yazılım Çözümleri',
+    title: 'Abdurrahman Rıdvan | İşletmeler İçin Web Sitesi ve Yazılım Çözümleri',
     description:
       'Ankara’da işletmenize özel, hızlı ve müşteri getiren web siteleri, kurumsal barındırma ve birebir teknik destek.',
-    siteName: 'Abdurrahman El Şavvaf',
+    siteName: 'Abdurrahman Rıdvan',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Abdurrahman El Şavvaf | İşletmeler İçin Web Sitesi ve Yazılım',
+    title: 'Abdurrahman Rıdvan | İşletmeler İçin Web Sitesi ve Yazılım',
     description:
       'Ankara’da işletmeler için mobil uyumlu web siteleri, özel yazılım ve birebir destek.',
   },

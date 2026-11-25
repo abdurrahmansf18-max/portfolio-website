@@ -1,7 +1,7 @@
 "use client"
 
 import { useLanguage } from "@/lib/language-context"
-import { MapPin, GraduationCap, Briefcase, Server, ExternalLink, Download, Shield } from "lucide-react"
+import { MapPin, GraduationCap, Briefcase, Server, ExternalLink, Shield } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 
@@ -63,7 +63,7 @@ export function AboutSection() {
                 <div className="relative aspect-[4/5] w-full">
                   <Image
                     src="/abdo4.jpg"
-                    alt="Abdurrahman El Şavvaf"
+                    alt="Abdurrahman Rıdvan"
                     fill
                     priority
                     sizes="(max-width: 1024px) 100vw, 400px"
@@ -73,7 +73,7 @@ export function AboutSection() {
                 </div>
                 <div className={cn("p-4 sm:p-5 border-t border-border/60", isRTL && "text-right")}>
                   <p className="text-base font-bold text-foreground">
-                    {isRTL ? "عبد الرحمن الشواف" : "Abdurrahman El Şavvaf"}
+                    {isRTL ? "عبد الرحمن رضوان" : "Abdurrahman Rıdvan"}
                   </p>
                   <p className="text-xs sm:text-sm text-muted-foreground mt-1">
                     {t.about.cardRole}
@@ -148,14 +148,6 @@ export function AboutSection() {
                       >
                         {t.about.internship.websiteLabel}
                         <ExternalLink size={13} />
-                      </a>
-                      <a
-                        href="/abdurrahman-el-savvaf-cv.pdf"
-                        download
-                        className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        <Download size={13} />
-                        {t.about.downloadCV}
                       </a>
                     </div>
                   </div>
