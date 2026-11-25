@@ -2,41 +2,14 @@
 
 import { useState } from "react"
 import { useLanguage } from "@/lib/language-context"
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Send,
-  CircleCheck,
-} from "lucide-react"
+import { Phone, Mail, MapPin, Send, CircleCheck, MessageCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-const contactInfo = [
-  {
-    icon: Phone,
-    key: "phone",
-    value: "+90 539 738 94 76",
-    href: "tel:+905397389476",
-    gradient: "from-[#06B6D4] to-[#0EA5E9]",
-  },
-  {
-    icon: Mail,
-    key: "email",
-    value: "abdurrahmansf18@gmail.com",
-    href: "mailto:abdurrahmansf18@gmail.com",
-    gradient: "from-[#0EA5E9] to-[#22D3EE]",
-  },
-  {
-    icon: MapPin,
-    key: "location",
-    value: "Ankara, Turkiye",
-    href: null,
-    gradient: "from-[#22D3EE] to-[#38BDF8]",
-  },
-]
+const WHATSAPP_URL =
+  "https://wa.me/905397389476?text=Merhaba%20Abdurrahman%20Bey%2C%20i%C5%9Fletmem%20i%C3%A7in%20web%20sitesi%20ve%20yaz%C4%B1l%C4%B1m%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
 
 export function ContactSection() {
-  const { t, language, isRTL } = useLanguage()
+  const { t, isRTL } = useLanguage()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -45,27 +18,6 @@ export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
   const [statusMessage, setStatusMessage] = useState("")
-
-  const messages = {
-    en: {
-      sending: "Sending...",
-      success: "Your message has been sent successfully. Thank you for your kind message. I will review it carefully and get back to you as soon as possible.",
-      error: "Something went wrong. Please try again.",
-      configError: "Contact service is not configured yet. Please try again later.",
-    },
-    tr: {
-      sending: "Gonderiliyor...",
-      success: "Mesajiniz basariyla gonderildi. Nazik mesajiniz icin tesekkur ederim. En kisa surede inceleyip size geri donus saglayacagim.",
-      error: "Bir hata olustu. Lutfen tekrar deneyin.",
-      configError: "Iletisim servisi henuz yapilandirilmamis. Lutfen daha sonra tekrar deneyin.",
-    },
-    ar: {
-      sending: "جار الارسال...",
-      success: "تم ارسال رسالتك بنجاح. شكراً لرسالتك الكريمة. سأقوم بمراجعتها والرد عليك في أقرب وقت ممكن.",
-      error: "حدث خطا ما. يرجى المحاولة مرة اخرى.",
-      configError: "خدمة التواصل غير مهيأة بعد. يرجى المحاولة لاحقاً.",
-    },
-  } as const
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -92,21 +44,20 @@ export function ContactSection() {
         if (payload.code === "SERVER_NOT_CONFIGURED") {
           throw new Error("SERVER_NOT_CONFIGURED")
         }
-
         throw new Error(payload.error || "Failed request")
       }
 
       setSubmitStatus("success")
-      setStatusMessage(messages[language].success)
+      setStatusMessage(t.contact.status.success)
       setFormData({ name: "", email: "", message: "" })
     } catch (error) {
       console.error("Contact form submit error:", error)
       setSubmitStatus("error")
 
       if (error instanceof Error && error.message === "SERVER_NOT_CONFIGURED") {
-        setStatusMessage(messages[language].configError)
+        setStatusMessage(t.contact.status.configError)
       } else {
-        setStatusMessage(messages[language].error)
+        setStatusMessage(t.contact.status.error)
       }
     } finally {
       setIsSubmitting(false)
@@ -114,8 +65,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-16 sm:py-20 md:py-32 relative overflow-hidden">
-      {/* Background gradients */}
+    <section id="contact" className="py-16 sm:py-20 md:py-28 relative overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/4 left-0 w-[400px] h-[400px] bg-[var(--gradient-primary-start)]/5 rounded-full blur-[100px]" />
         <div className="absolute bottom-1/4 right-0 w-[300px] h-[300px] bg-[var(--gradient-secondary-start)]/5 rounded-full blur-[100px]" />
@@ -123,74 +73,110 @@ export function ContactSection() {
 
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
-          {/* Section Title with gradient */}
-          <div className="mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <div className={cn("mb-10 sm:mb-12", isRTL && "text-right")}>
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">
               <span className="text-gradient">{t.contact.title}</span>
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-[var(--gradient-primary-start)] to-[var(--gradient-primary-end)] rounded-full" />
-            <p className="text-muted-foreground mt-4 max-w-2xl">
+            <div
+              className={cn(
+                "w-20 h-1 bg-gradient-to-r from-[var(--gradient-primary-start)] to-[var(--gradient-primary-end)] rounded-full mb-4",
+                isRTL && "ml-auto"
+              )}
+            />
+            <p className="text-muted-foreground max-w-2xl text-sm sm:text-base">
               {t.contact.description}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-            {/* Contact Info */}
-            <div>
-              <h3 className="text-xl font-semibold text-foreground mb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
+            {/* Direct WhatsApp & Phone First */}
+            <div className="space-y-4">
+              <h3 className={cn("text-xl font-bold text-foreground mb-4", isRTL && "text-right")}>
                 {t.contact.subtitle}
               </h3>
 
-              {/* Contact Details */}
-              <div className="space-y-4 mb-8">
-                {contactInfo.map((item) => (
-                  <div
-                    key={item.key}
-                    className={cn(
-                      "flex items-center gap-4 p-4 bg-card rounded-xl border border-border group hover:bg-card/80 transition-all duration-300",
-                      isRTL && "flex-row-reverse text-right"
-                    )}
-                  >
-                    {/* Icon with Rotating Glowing Border */}
-                    <div className="relative w-12 h-12 rounded-xl overflow-hidden flex items-center justify-center shrink-0">
-                      {/* Rotating line */}
-                      <div className="absolute inset-[-100%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_0deg,transparent_0_270deg,#06B6D4_360deg)] group-hover:bg-[conic-gradient(from_0deg,transparent_0_270deg,#fff_360deg)] transition-all duration-300" />
-                      {/* Inner background */}
-                      <div className={cn(
-                        "absolute inset-[2px] rounded-[10px] bg-gradient-to-br flex items-center justify-center z-10",
-                        item.gradient
-                      )}>
-                        <item.icon size={20} className="text-white" />
-                      </div>
-                    </div>
+              {/* Primary WhatsApp Card */}
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  "flex items-center gap-4 p-5 rounded-2xl border border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500/15 transition-all duration-200 group",
+                  isRTL && "flex-row-reverse text-right"
+                )}
+              >
+                <div className="w-12 h-12 rounded-xl bg-emerald-600 flex items-center justify-center shrink-0 text-white shadow-md">
+                  <MessageCircle size={24} />
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm font-bold text-emerald-400">{t.contact.whatsappTitle}</p>
+                  <p className="text-base font-bold text-foreground mt-0.5">+90 539 738 94 76</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{t.contact.whatsappDesc}</p>
+                </div>
+              </a>
 
-                    <div className="flex-1">
-                      <p className="text-sm text-muted-foreground">
-                        {t.contact.info[item.key as keyof typeof t.contact.info]}
-                      </p>
-                      {item.href ? (
-                        <a
-                          href={item.href}
-                          className="text-foreground hover:text-cyan-400 transition-colors duration-300 block"
-                        >
-                          {item.value}
-                        </a>
-                      ) : (
-                        <p className="text-foreground">{item.value}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
+              {/* Direct Call Card */}
+              <a
+                href="tel:+905397389476"
+                className={cn(
+                  "flex items-center gap-4 p-4 bg-card rounded-2xl border border-border hover:border-primary/40 transition-all duration-200",
+                  isRTL && "flex-row-reverse text-right"
+                )}
+              >
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#06B6D4] to-[#0EA5E9] flex items-center justify-center shrink-0 text-white">
+                  <Phone size={20} />
+                </div>
+                <div className="flex-1">
+                  <p className="text-xs text-muted-foreground">{t.contact.callTitle}</p>
+                  <p className="text-base font-semibold text-foreground">0539 738 94 76</p>
+                  <p className="text-xs text-muted-foreground">{t.contact.callDesc}</p>
+                </div>
+              </a>
+
+              {/* Email Card */}
+              <a
+                href="mailto:abdurrahmansf18@gmail.com"
+                className={cn(
+                  "flex items-center gap-4 p-4 bg-card rounded-2xl border border-border hover:border-primary/40 transition-all duration-200",
+                  isRTL && "flex-row-reverse text-right"
+                )}
+              >
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#0EA5E9] to-[#22D3EE] flex items-center justify-center shrink-0 text-white">
+                  <Mail size={20} />
+                </div>
+                <div className="flex-1">
+                  <p className="text-xs text-muted-foreground">{t.contact.info.email}</p>
+                  <p className="text-sm sm:text-base font-medium text-foreground">abdurrahmansf18@gmail.com</p>
+                </div>
+              </a>
+
+              {/* Location Card */}
+              <div
+                className={cn(
+                  "flex items-center gap-4 p-4 bg-card rounded-2xl border border-border",
+                  isRTL && "flex-row-reverse text-right"
+                )}
+              >
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#22D3EE] to-[#38BDF8] flex items-center justify-center shrink-0 text-white">
+                  <MapPin size={20} />
+                </div>
+                <div className="flex-1">
+                  <p className="text-xs text-muted-foreground">{t.contact.info.location}</p>
+                  <p className="text-sm sm:text-base font-medium text-foreground">{t.about.location}</p>
+                </div>
               </div>
             </div>
 
             {/* Contact Form */}
-            <div className="bg-card rounded-xl border border-border p-4 sm:p-6 card-glow">
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+            <div className="bg-card rounded-2xl border border-border p-5 sm:p-6 card-glow">
+              <h4 className={cn("text-lg font-bold text-foreground mb-4", isRTL && "text-right")}>
+                {t.contact.formTitle}
+              </h4>
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-xs sm:text-sm font-medium text-foreground mb-2"
+                    className={cn("block text-xs sm:text-sm font-medium text-foreground mb-1.5", isRTL && "text-right")}
                   >
                     {t.contact.form.name}
                   </label>
@@ -199,11 +185,9 @@ export function ContactSection() {
                     id="name"
                     minLength={2}
                     value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder={t.contact.form.namePlaceholder}
-                    className="w-full px-3 sm:px-4 py-3 sm:py-4 bg-background border border-border rounded-lg text-sm sm:text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300"
+                    className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                     required
                   />
                 </div>
@@ -211,7 +195,7 @@ export function ContactSection() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-xs sm:text-sm font-medium text-foreground mb-2"
+                    className={cn("block text-xs sm:text-sm font-medium text-foreground mb-1.5", isRTL && "text-right")}
                   >
                     {t.contact.form.email}
                   </label>
@@ -219,11 +203,9 @@ export function ContactSection() {
                     type="email"
                     id="email"
                     value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder={t.contact.form.emailPlaceholder}
-                    className="w-full px-3 sm:px-4 py-3 sm:py-4 bg-background border border-border rounded-lg text-sm sm:text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300"
+                    className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary"
                     required
                   />
                 </div>
@@ -231,7 +213,7 @@ export function ContactSection() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-xs sm:text-sm font-medium text-foreground mb-2"
+                    className={cn("block text-xs sm:text-sm font-medium text-foreground mb-1.5", isRTL && "text-right")}
                   >
                     {t.contact.form.message}
                   </label>
@@ -239,12 +221,10 @@ export function ContactSection() {
                     id="message"
                     minLength={10}
                     value={formData.message}
-                    onChange={(e) =>
-                      setFormData({ ...formData, message: e.target.value })
-                    }
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     placeholder={t.contact.form.messagePlaceholder}
                     rows={4}
-                    className="w-full px-3 sm:px-4 py-3 sm:py-4 bg-background border border-border rounded-lg text-sm sm:text-base text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 bg-background border border-border rounded-xl text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary resize-none"
                     required
                   />
                 </div>
@@ -253,18 +233,18 @@ export function ContactSection() {
                   type="submit"
                   disabled={isSubmitting}
                   className={cn(
-                    "inline-flex items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 rounded-lg font-medium text-sm sm:text-base text-white btn-gradient w-full justify-center disabled:opacity-70 disabled:cursor-not-allowed",
+                    "inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold text-sm sm:text-base text-white btn-gradient w-full justify-center disabled:opacity-70 disabled:cursor-not-allowed",
                     isRTL && "flex-row-reverse"
                   )}
                 >
-                  <Send size={18} />
-                  {isSubmitting ? messages[language].sending : t.contact.form.send}
+                  <Send size={17} />
+                  {isSubmitting ? t.contact.status.sending : t.contact.form.send}
                 </button>
 
                 {submitStatus !== "idle" && (
                   <div
                     className={cn(
-                      "text-sm rounded-lg border px-4 py-3",
+                      "text-sm rounded-xl border px-4 py-3",
                       submitStatus === "success"
                         ? "bg-emerald-500/10 border-emerald-400/40 text-emerald-300"
                         : "bg-red-500/10 border-red-400/40 text-red-300"

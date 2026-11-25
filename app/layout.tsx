@@ -5,33 +5,45 @@ import { ThemeProvider } from '@/lib/theme-context'
 import { LanguageProvider } from '@/lib/language-context'
 import './globals.css'
 
-const inter = Inter({ 
-  subsets: ["latin"],
+const inter = Inter({
+  subsets: ['latin', 'latin-ext'],
   variable: '--font-inter',
 })
 
-const firaCode = Fira_Code({ 
-  subsets: ["latin"],
+const firaCode = Fira_Code({
+  subsets: ['latin'],
   variable: '--font-fira-code',
 })
 
 export const metadata: Metadata = {
-  title: 'Abdurrahman El Savvaf | Full Stack Developer',
-  description: 'Full Stack Developer specializing in modern web applications using React, Next.js, Python, FastAPI, .NET, and more. Based in Ankara, Türkiye.',
-  keywords: ['Full Stack Developer', 'React', 'Next.js', 'Python', 'FastAPI', '.NET', 'Web Development', 'Ankara', 'Türkiye'],
-  authors: [{ name: 'Abdurrahman El Savvaf' }],
-  creator: 'Abdurrahman El Savvaf',
+  title: 'Abdurrahman El Şavvaf | İşletmeler İçin Web Sitesi ve Yazılım Çözümleri — Ankara',
+  description:
+    'Ankara merkezli bağımsız yazılımcı. İşletmenize müşteri kazandıran mobil uyumlu web siteleri, kendi sunucumda hızlı barındırma, özel yazılım ve birebir teknik destek.',
+  keywords: [
+    'Ankara Web Tasarım',
+    'Çankaya Web Sitesi',
+    'İşletme Web Sitesi',
+    'Özel Yazılım Ankara',
+    'Abdurrahman El Şavvaf',
+    'Full Stack Geliştirici',
+    'Ankara',
+    'Türkiye',
+  ],
+  authors: [{ name: 'Abdurrahman El Şavvaf' }],
+  creator: 'Abdurrahman El Şavvaf',
   openGraph: {
     type: 'website',
-    locale: 'en_US',
-    title: 'Abdurrahman El Savvaf | Full Stack Developer',
-    description: 'Full Stack Developer specializing in modern web applications',
-    siteName: 'Abdurrahman El Savvaf Portfolio',
+    locale: 'tr_TR',
+    title: 'Abdurrahman El Şavvaf | İşletmeler İçin Web Sitesi ve Yazılım Çözümleri',
+    description:
+      'Ankara’da işletmenize özel, hızlı ve müşteri getiren web siteleri, kurumsal barındırma ve birebir teknik destek.',
+    siteName: 'Abdurrahman El Şavvaf',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Abdurrahman El Savvaf | Full Stack Developer',
-    description: 'Full Stack Developer specializing in modern web applications',
+    title: 'Abdurrahman El Şavvaf | İşletmeler İçin Web Sitesi ve Yazılım',
+    description:
+      'Ankara’da işletmeler için mobil uyumlu web siteleri, özel yazılım ve birebir destek.',
   },
   robots: {
     index: true,
@@ -41,11 +53,9 @@ export const metadata: Metadata = {
     icon: [
       { url: '/icon-light-32x32.png', type: 'image/png', sizes: '32x32', media: '(prefers-color-scheme: light)' },
       { url: '/icon-dark-32x32.png', type: 'image/png', sizes: '32x32', media: '(prefers-color-scheme: dark)' },
-      { url: '/icon.svg', type: 'image/svg+xml' }
+      { url: '/icon.svg', type: 'image/svg+xml' },
     ],
-    apple: [
-      { url: '/apple-icon.png' },
-    ],
+    apple: [{ url: '/apple-icon.png' }],
   },
 }
 
@@ -64,12 +74,10 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${firaCode.variable} font-sans antialiased`}>
+    <html lang="tr" className="dark" suppressHydrationWarning>
+      <body className={`${inter.variable} ${firaCode.variable} font-sans antialiased pb-20 md:pb-0`}>
         <ThemeProvider>
-          <LanguageProvider>
-            {children}
-          </LanguageProvider>
+          <LanguageProvider>{children}</LanguageProvider>
         </ThemeProvider>
         <Analytics />
       </body>

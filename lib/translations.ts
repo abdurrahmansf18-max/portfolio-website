@@ -1,333 +1,500 @@
-export type Language = "en" | "tr" | "ar"
+export type Language = "tr" | "en" | "ar"
 
 export const translations = {
-  en: {
-    // Navbar
-    nav: {
-      home: "Home",
-      about: "About",
-      skills: "Skills",
-      projects: "Projects",
-      contact: "Contact",
-    },
-    // Hero Section
-    hero: {
-      greeting: "Hi, I'm",
-      title: "Abdurrahman El Savvaf",
-      subtitle: "Full Stack Developer",
-      description:
-        "Building scalable web applications with Python, .NET, React and Next.js. Passionate about creating modern and user-focused solutions.",
-      contactMe: "Get In Touch",
-      downloadCV: "Download CV",
-      viewProjects: "View My Work",
-      typingTexts: ["Full Stack Engineer", "Scalable System Builder", "Secure API Architect", "Product-Focused Problem Solver"],
-    },
-    // Stats
-    stats: {
-      experience: "Year Experience",
-      projects: "Projects Completed",
-      clients: "Happy Clients",
-    },
-    // About Section
-    about: {
-      title: "About Me",
-      bio: `Software Engineering graduate focused on full-stack web development. I build modern and scalable applications with a practical, project-driven mindset.
-
-I have hands-on experience with FastAPI, .NET Core, React, PostgreSQL, Docker, and VPS deployment. I enjoy designing clean APIs, building maintainable systems, and delivering complete solutions from backend to frontend.
-
-I work effectively both independently and in teams, with strong problem-solving skills and a focus on turning real client requirements into production-ready products.`,
-      internship: {
-        title: "Internship Experience",
-        company: "Rakort - Software Engineering Intern (2024-07-01 - 2025-07-01)",
-        summary:
-          "Completed a long-term internship at a technology-focused company delivering software and digital solutions.",
-        whatWeDoTitle: "What They Do",
-        whatWeDo:
-          "Contributed to full-stack development tasks using FastAPI, .NET Core, React, and PostgreSQL within a professional team environment.",
-        productsTitle: "Product Vision",
-        products:
-          "Gained practical experience in scalable architecture, modern development workflows, and deployment strategies.",
-        websiteLabel: "Visit Rakort",
-      },
-      location: "Ankara, Turkiye",
-      education: "Ostim Technical University (Graduate)",
-      experience: "Rakort (1 Year Internship)",
-      realProject: "Real Client Project",
-      realProjectDesc: "Developed and sold a professional website for a real client",
-    },
-    // Skills Section
-    skills: {
-      title: "Technical Skills",
-      categories: {
-        backend: "Backend",
-        frontend: "Frontend",
-        devops: "DevOps & Hosting",
-        databases: "Database",
-        tools: "Tools & Others",
-        languages: "Additional Languages",
-        spoken: "Spoken Languages",
-      },
-      spokenLevels: {
-        turkish: "Turkish (Very Good)",
-        arabic: "Arabic (Very Good)",
-        english: "English (A2)",
-      },
-    },
-    // Projects Section
-    projects: {
-      title: "Featured Projects",
-      viewProject: "Live Demo",
-      viewCode: "Source Code",
-      technologies: "Technologies:",
-      keyFeatures: "Key Features:",
-      gallery: "Project Screenshots",
-      swipeHint: "Swipe right to view more screenshots",
-    },
-    // Contact Section
-    contact: {
-      title: "Get In Touch",
-      subtitle: "Let's work together",
-      description:
-        "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions. Feel free to reach out!",
-      form: {
-        name: "Name",
-        email: "Email",
-        message: "Message",
-        send: "Send Message",
-        namePlaceholder: "Your name",
-        emailPlaceholder: "your@email.com",
-        messagePlaceholder: "Your message...",
-      },
-      info: {
-        phone: "Phone",
-        email: "Email",
-        location: "Location",
-      },
-    },
-    // Footer
-    footer: {
-      rights: "All rights reserved",
-      developer: "Full Stack Developer",
-    },
-  },
   tr: {
-    // Navbar
     nav: {
       home: "Ana Sayfa",
+      services: "Hizmetler",
+      projects: "Referanslar",
       about: "Hakkımda",
-      skills: "Yetenekler",
-      projects: "Projeler",
       contact: "İletişim",
+      whatsappBtn: "WhatsApp",
     },
-    // Hero Section
     hero: {
-      greeting: "Merhaba, Ben",
-      title: "Abdurrahman El Savvaf",
-      subtitle: "Full Stack Geliştirici",
+      badge: "Ankara Merkezli · Birebir Destek & Yüz Yüze Görüşme",
+      greeting: "Merhaba, Ben Abdurrahman El Şavvaf",
+      title: "İşletmenize Müşteri Kazandıran Web Siteleri ve Yazılım Çözümleri",
       description:
-        "Python, .NET, React ve Next.js ile ölçeklenebilir web uygulamaları geliştiriyorum. Modern ve kullanıcı odaklı çözümler oluşturmaya tutkulu.",
-      contactMe: "İletişime Geç",
-      downloadCV: "CV İndir",
-      viewProjects: "Çalışmalarımı Gör",
-      typingTexts: ["Full Stack Yazılım Mühendisi", "Ölçeklenebilir Sistem Geliştirici", "Güvenli API Mimarisi Uzmanı", "Ürün Odaklı Problem Çözücü"],
+        "Google’da sizi arayan müşterilerin tek tıkla telefonunuza ve WhatsApp’ınıza ulaşmasını sağlayan hızlı, modern web siteleri kuruyorum. Peşin ödeme riski olmadan, önce taslağınızı görüyorsunuz; beğenirseniz yayına alıyoruz.",
+      whatsappCta: "WhatsApp’tan Yaz",
+      callCta: "Hemen Ara: 0539 738 94 76",
+      viewProjects: "Yaptığım İşleri Gör",
+      typingTexts: [
+        "İşletmeler İçin Mobil Web Sitesi",
+        "Hemen Ara & WhatsApp Teklif Sistemi",
+        "Kendi Sunucumda Hızlı Barındırma",
+        "İşletmenize Özel Yazılım & Teknik Destek",
+      ],
+      trustPoints: [
+        {
+          title: "Önce Gör, Beğenince Öde",
+          desc: "Önce firmanıza özel örneği görür, yayında test ettikten sonra ödeme yaparsınız.",
+        },
+        {
+          title: "Canlı Müşteri Referansı",
+          desc: "Ergun Nakliyat’ın web sitesini ve teknik bakımını 1 yıldır aktif olarak yürütüyorum.",
+        },
+        {
+          title: "Tek Muhatap · Ankara İçi",
+          desc: "Ajans karmaşası yok; telefonla ya da yüz yüze doğrudan benimle görüşürsünüz.",
+        },
+      ],
     },
-    // Stats
-    stats: {
-      experience: "Yıl Deneyim",
-      projects: "Tamamlanan Proje",
-      clients: "Mutlu Müşteri",
+    services: {
+      title: "İşletmeniz İçin Neler Yapıyorum?",
+      subtitle:
+        "Karmaşık teknik terimler yok; dükkanınıza veya firmanıza doğrudan müşteri ve kolaylık getiren pratik çözümler sunuyorum.",
+      items: [
+        {
+          key: "website",
+          title: "Müşteri Getiren Mobil Web Sitesi",
+          desc: "Telefonundan Google’da hizmet arayan müşteriler sitenize girdiğinde tek tıkla sizi arayabilir veya WhatsApp’tan doğrudan fiyat isteyebilir.",
+        },
+        {
+          key: "hosting",
+          title: "Alan Adı, Kendi Sunucumda Barındırma & SSL",
+          desc: "Teknik ayarlarla uğraşmazsınız. Firmanıza özel .com.tr alan adınızı, güvenli SSL kilidinizi ve kendi VPS sunucumda hızlı barındırmanızı hazır teslim ederim.",
+        },
+        {
+          key: "maintenance",
+          title: "1 Yıl Birebir Bakım ve Güncelleme",
+          desc: "Telefon numaranız, adresiniz, fotoğrafınız veya hizmet metniniz değiştiğinde tek WhatsApp mesajıyla hemen güncellerim; muhatap aramazsınız.",
+        },
+        {
+          key: "software",
+          title: "Özel Yazılım ve Sürekli Teknoloji Desteği",
+          desc: "İleride iş takibi, müşteri kayıt paneli, randevu sistemi veya bilgisayar/dijital bir ihtiyacınız olduğunda yine kendi yazılımcınız olarak yanınızdayım.",
+        },
+      ],
+      processTitle: "Nasıl Çalışıyorum? (3 Basit Adımda Sıfır Risk)",
+      processSteps: [
+        {
+          step: "01",
+          title: "Örnek Taslağı Hazırlıyorum",
+          desc: "İşletmenizin gerçek adı, adresi ve hizmetleriyle telefonunuzdan bakabileceğiniz örnek sayfanızı hazırlayıp gösteriyorum.",
+        },
+        {
+          step: "02",
+          title: "Onayınızla Yayına Alıyorum",
+          desc: "İstediğiniz düzenlemeleri yapıp alan adınıza bağlıyor, kendi sunucumda güvenli ve hızlı şekilde yayına alıyorum.",
+        },
+        {
+          step: "03",
+          title: "Çalışır Halde Teslim & Ödeme",
+          desc: "Telefonunuzdan sitenizin sorunsuz çalıştığını gördüğünüzde ödemeyi yapıyorsunuz; tüm erişimler şeffaf biçimde sizde kalıyor.",
+        },
+      ],
+      techToggleLabel: "Teknik Altyapı & Kullandığım Teknolojiler (Merak Edenler İçin)",
+      spokenTitle: "İletişim Dilleri",
+      spokenLevels: ["Türkçe (Çok İyi)", "Arapça (Çok İyi)", "İngilizce (A2)"],
     },
-    // About Section
-    about: {
-      title: "Hakkımda",
-      bio: `Web tabanlı full-stack geliştirmeye odaklanan motive bir Yazılım Mühendisliği mezunuyum. Modern ve ölçeklenebilir uygulamalar geliştirirken gerçek proje deneyimini merkeze alıyorum.
-
-FastAPI, .NET Core, React, PostgreSQL, Docker ve VPS dağıtımı konularında uygulamalı deneyime sahibim. Temiz API tasarımı, sürdürülebilir mimari ve uçtan uca çözüm üretimi benim temel çalışma yaklaşımımdır.
-
-Hem bireysel hem ekip çalışmalarında etkili şekilde görev alır, güçlü problem çözme becerileriyle müşteri ihtiyaçlarını üretime hazır ürünlere dönüştürürüm.`,
-      internship: {
-        title: "Staj Deneyimi",
-        company: "Rakort - Yazılım Mühendisliği Stajyeri (2024-07-01 - 2025-07-01)",
-        summary:
-          "Yazılım geliştirme ve dijital çözümler üreten teknoloji odaklı bir şirkette uzun dönem staj deneyimi edindim.",
-        whatWeDoTitle: "Neler Yapıyor",
-        whatWeDo:
-          "FastAPI, .NET Core, React ve PostgreSQL kullanarak full-stack geliştirme görevlerinde aktif rol aldım ve profesyonel ekip sürecine katkı sundum.",
-        productsTitle: "Ürün Vizyonu",
-        products:
-          "Ölçeklenebilir mimari, modern geliştirme akışları ve dağıtım süreçlerinde pratik tecrübe kazandım.",
-        websiteLabel: "Rakort'u Ziyaret Et",
-      },
-      location: "Ankara, Türkiye",
-      education: "Ostim Teknik Üniversitesi (Mezun)",
-      experience: "Rakort (1 Yıllık Staj)",
-      realProject: "Gerçek Müşteri Projesi",
-      realProjectDesc: "Gerçek bir müşteri için profesyonel bir web sitesi geliştirdim ve sattım",
-    },
-    // Skills Section
-    skills: {
-      title: "Teknik Yetenekler",
-      categories: {
-        backend: "Backend",
-        frontend: "Frontend",
-        devops: "DevOps & Hosting",
-        databases: "Veritabanı",
-        tools: "Araçlar & Diğer",
-        languages: "Ek Diller",
-        spoken: "Konuşulan Diller",
-      },
-      spokenLevels: {
-        turkish: "Türkçe (Çok İyi)",
-        arabic: "Arapça (Çok İyi)",
-        english: "İngilizce (A2)",
-      },
-    },
-    // Projects Section
     projects: {
-      title: "Öne Çıkan Projeler",
-      viewProject: "Canlı Demo",
-      viewCode: "Kaynak Kod",
-      technologies: "Teknolojiler:",
-      keyFeatures: "Temel Özellikler:",
-      gallery: "Proje Görselleri",
-      swipeHint: "Daha fazla görsel için sağa kaydırın",
+      title: "Canlı Referans ve Yaptığım İşler",
+      subtitle:
+        "Sadece söz değil, aktif olarak yayında olan gerçek müşteri projem ve geliştirdiğim yazılım sistemleri:",
+      featuredBadge: "Aktif Müşteri · 1 Yıldır Kendi Sunucumda Yayında",
+      viewProject: "Canlı Siteyi Aç",
+      viewCode: "Teknik İnceleme (GitHub)",
+      technologies: "Altyapı:",
+      keyFeatures: "Neler Kazandırıyor?",
+      gallery: "Ekran Görüntüleri",
+      swipeHint: "Diğer görseller için kaydırın",
+      liveBadge: "Canlı Site",
+      screenshotsLabel: "görsel",
+      copyLink: "Bağlantıyı Kopyala",
+      copied: "Kopyalandı!",
+      closePreview: "Kapat",
+      closeHint: "Kapatmak için dışarı veya Kapat butonuna tıklayın",
     },
-    // Contact Section
+    about: {
+      title: "Ben Kimim?",
+      subtitle: "Ankara’da İşletmeniz İçin Ulaşılabilir, Dürüst ve Uzun Vadeli Yazılım Ortağınız",
+      cardRole: "Yazılım Mühendisi · Bağımsız Web & Yazılım Uzmanı",
+      bio: `Merhaba, ben Abdurrahman El Şavvaf. Ankara’da yaşayan, Ostim Teknik Üniversitesi Yazılım Mühendisliği eğitimi almış bağımsız bir yazılımcıyım.
+
+Amacım tek seferlik site yapıp kaybolmak değil; Ankara’daki esnaf ve işletmelerle uzun yıllar sürecek güvene dayalı bir çalışma ilişkisi kurmak. Örneğin Ergun Nakliyat’ın web sitesini 1 yıldır kendi sunucumda barındırıyor ve her ihtiyaçlarında birebir destek veriyorum.
+
+Büyük ajansların yüksek maliyetleri ve ulaşılamayan santralleri yerine; tek telefonla ulaşabileceğiniz, gerektiğinde Ankara içi yüz yüze görüşebileceğiniz ve işinizi kendi işi gibi takip eden bir çözüm ortağı olarak çalışıyorum.`,
+      location: "Ankara, Türkiye (Yüz Yüze Görüşme)",
+      education: "Ostim Teknik Üniversitesi · Yazılım Müh.",
+      experience: "Rakort · 1 Yıl Kurumsal Yazılım Deneyimi",
+      vpsHighlight: "Kendi VPS Sunucum · Kesintisiz Barındırma",
+      internship: {
+        title: "Kurumsal Yazılım Deneyimi",
+        company: "Rakort — Yazılım Mühendisliği (1 Yıl)",
+        summary:
+          "Profesyonel ekip ortamında modern web uygulamaları, veritabanı sistemleri ve sunucu dağıtım süreçlerinde aktif görev aldım.",
+        websiteLabel: "Rakort’u İncele",
+      },
+      downloadCV: "Özgeçmiş (CV) İndir",
+    },
     contact: {
-      title: "İletişime Geçin",
-      subtitle: "Birlikte çalışalım",
+      title: "Hemen İletişime Geçin",
+      subtitle: "İşletmeniz için ücretsiz örnek taslak konuşalım",
       description:
-        "Yeni projeler, yaratıcı fikirler veya vizyonunuzun bir parçası olma fırsatları hakkında konuşmaya her zaman açığım. İletişime geçmekten çekinmeyin!",
+        "Web sitesi, yenileme veya işletmenize özel bir yazılım ihtiyacınız varsa bana doğrudan WhatsApp’tan yazabilir ya da arayabilirsiniz. Ankara içindeyseniz yüz yüze de görüşebiliriz.",
+      whatsappTitle: "WhatsApp (En Hızlı Yol)",
+      whatsappDesc: "Tek tıkla yazın, aynı gün dönüş yapayım",
+      whatsappAction: "WhatsApp Sohbetini Başlat",
+      callTitle: "Telefonla Ara",
+      callDesc: "Doğrudan benimle görüşün",
+      formTitle: "Veya Buradan Mesaj Bırakın",
       form: {
-        name: "Ad",
-        email: "E-posta",
-        message: "Mesaj",
+        name: "Adınız / Firma Adınız",
+        email: "E-posta Adresiniz",
+        message: "İhtiyacınız Nedir?",
         send: "Mesaj Gönder",
-        namePlaceholder: "Adınız",
-        emailPlaceholder: "email@adresiniz.com",
-        messagePlaceholder: "Mesajınız...",
+        namePlaceholder: "Örn: Mehmet Güneş - Cebeci Nakliyat",
+        emailPlaceholder: "ornek@mail.com",
+        messagePlaceholder: "İşletmenizden ve nasıl bir site/çözüm istediğinizden kısaca bahsedin...",
       },
       info: {
-        phone: "Telefon",
+        phone: "Telefon & WhatsApp",
         email: "E-posta",
         location: "Konum",
       },
+      status: {
+        sending: "Gönderiliyor...",
+        success: "Mesajınız başarıyla iletildi. En kısa sürede size dönüş yapacağım.",
+        error: "Mesaj gönderilirken bir hata oluştu. Lütfen WhatsApp veya telefon üzerinden ulaşın.",
+        configError: "E-posta servisi şu an aktif değil; lütfen doğrudan WhatsApp veya telefonla ulaşın.",
+      },
     },
-    // Footer
     footer: {
       rights: "Tüm hakları saklıdır",
-      developer: "Full Stack Geliştirici",
+      developer: "Ankara · İşletmeler İçin Web Sitesi ve Yazılım Çözümleri",
+      mobileCall: "Hemen Ara",
+      mobileWhatsapp: "WhatsApp’tan Yaz",
+    },
+  },
+  en: {
+    nav: {
+      home: "Home",
+      services: "Services",
+      projects: "References",
+      about: "About",
+      contact: "Contact",
+      whatsappBtn: "WhatsApp",
+    },
+    hero: {
+      badge: "Based in Ankara · Direct Support & Face-to-Face Meetings",
+      greeting: "Hi, I’m Abdurrahman El Savvaf",
+      title: "Websites and Software Solutions That Bring Real Customers",
+      description:
+        "I build fast, mobile-first websites that turn local Google searches into direct phone calls and WhatsApp inquiries. See a live preview tailored to your business first — pay only when you approve.",
+      whatsappCta: "Message on WhatsApp",
+      callCta: "Call: +90 539 738 94 76",
+      viewProjects: "See Live Work",
+      typingTexts: [
+        "Mobile-First Business Websites",
+        "Direct Call & WhatsApp Quote Flows",
+        "Fast Hosting on My Own VPS",
+        "Custom Software & Ongoing Support",
+      ],
+      trustPoints: [
+        {
+          title: "Preview First, Pay on Delivery",
+          desc: "Review a draft tailored to your business and pay only when it is live and working.",
+        },
+        {
+          title: "Active Client Reference",
+          desc: "Built, hosted, and maintained Ergun Nakliyat’s live website for over a year.",
+        },
+        {
+          title: "Single Point of Contact",
+          desc: "No agency middlemen — talk directly with me by phone, WhatsApp, or in person in Ankara.",
+        },
+      ],
+    },
+    services: {
+      title: "How I Help Your Business",
+      subtitle:
+        "Clear, practical digital solutions designed to bring new customers and save time — without confusing tech jargon.",
+      items: [
+        {
+          key: "website",
+          title: "Customer-Focused Mobile Websites",
+          desc: "Fast, clean sites built so visitors on mobile can call you or request a quote on WhatsApp with a single tap.",
+        },
+        {
+          key: "hosting",
+          title: "Domain, VPS Hosting & SSL Included",
+          desc: "No technical headaches. I set up your domain, SSL security, and reliable hosting on my own VPS server.",
+        },
+        {
+          key: "maintenance",
+          title: "1-Year Direct Support & Updates",
+          desc: "Need to change a phone number, photo, or service text? Send one WhatsApp message and I handle it quickly.",
+        },
+        {
+          key: "software",
+          title: "Custom Software & Tech Partnership",
+          desc: "Beyond your website, I stay available as your long-term developer for tracking panels, automation, or custom tools.",
+        },
+      ],
+      processTitle: "How It Works (3 Risk-Free Steps)",
+      processSteps: [
+        {
+          step: "01",
+          title: "Custom Preview Draft",
+          desc: "I prepare a mobile preview using your real business name, services, and contact info.",
+        },
+        {
+          step: "02",
+          title: "Refinement & Launch",
+          desc: "Once you approve, I connect your domain and launch the site with SSL on fast hosting.",
+        },
+        {
+          step: "03",
+          title: "Delivery & Payment",
+          desc: "You test everything live on your phone and pay upon delivery, with full ownership of your domain.",
+        },
+      ],
+      techToggleLabel: "Technical Stack & Infrastructure (For Tech Visitors)",
+      spokenTitle: "Spoken Languages",
+      spokenLevels: ["Turkish (Fluent)", "Arabic (Fluent)", "English (A2)"],
+    },
+    projects: {
+      title: "Live Client Reference & Projects",
+      subtitle: "Real production client website and custom software systems I built:",
+      featuredBadge: "Active Client · 1 Year Live on My VPS",
+      viewProject: "Open Live Site",
+      viewCode: "Source Code (GitHub)",
+      technologies: "Stack:",
+      keyFeatures: "Key Benefits:",
+      gallery: "Screenshots",
+      swipeHint: "Swipe to see more",
+      liveBadge: "Live Site",
+      screenshotsLabel: "screenshots",
+      copyLink: "Copy Link",
+      copied: "Copied!",
+      closePreview: "Close",
+      closeHint: "Click outside or press Close",
+    },
+    about: {
+      title: "About Me",
+      subtitle: "Your Reliable, Long-Term Local Software Partner in Ankara",
+      cardRole: "Software Engineer · Independent Web & Software Developer",
+      bio: `Hi, I’m Abdurrahman El Savvaf — an independent Software Engineering developer based in Ankara (Ostim Technical University).
+
+My goal isn’t to build a one-off website and disappear; I build lasting partnerships with local businesses. For example, I built and have hosted Ergun Nakliyat’s website on my own VPS for the past year with ongoing support.
+
+Instead of expensive agencies and slow ticket queues, you get one reliable developer you can reach directly on WhatsApp, by phone, or in person in Ankara.`,
+      location: "Ankara, Türkiye (In-Person Available)",
+      education: "Ostim Technical University · Software Eng.",
+      experience: "Rakort · 1 Year Software Experience",
+      vpsHighlight: "Own VPS Infrastructure · Fast Hosting",
+      internship: {
+        title: "Industry Experience",
+        company: "Rakort — Software Engineering Intern (1 Year)",
+        summary:
+          "Worked on full-stack web applications, databases, and production deployment workflows in a professional engineering team.",
+        websiteLabel: "Visit Rakort",
+      },
+      downloadCV: "Download CV",
+    },
+    contact: {
+      title: "Get In Touch",
+      subtitle: "Let’s discuss a free preview for your business",
+      description:
+        "Message me on WhatsApp or call directly to talk about your website or custom software needs. Available for face-to-face meetings in Ankara.",
+      whatsappTitle: "WhatsApp (Fastest)",
+      whatsappDesc: "Tap to message — same-day response",
+      whatsappAction: "Start WhatsApp Chat",
+      callTitle: "Call Directly",
+      callDesc: "Speak directly with me",
+      formTitle: "Or Send a Message Here",
+      form: {
+        name: "Your Name / Business",
+        email: "Email",
+        message: "How can I help?",
+        send: "Send Message",
+        namePlaceholder: "Your name or company",
+        emailPlaceholder: "your@email.com",
+        messagePlaceholder: "Briefly describe your business and what you need...",
+      },
+      info: {
+        phone: "Phone & WhatsApp",
+        email: "Email",
+        location: "Location",
+      },
+      status: {
+        sending: "Sending...",
+        success: "Your message has been sent. I will get back to you shortly.",
+        error: "Something went wrong. Please reach out directly via WhatsApp or phone.",
+        configError: "Email service is not configured right now; please contact me via WhatsApp or phone.",
+      },
+    },
+    footer: {
+      rights: "All rights reserved",
+      developer: "Ankara · Websites & Software Solutions for Businesses",
+      mobileCall: "Call Now",
+      mobileWhatsapp: "WhatsApp",
     },
   },
   ar: {
-    // Navbar
     nav: {
       home: "الرئيسية",
+      services: "الخدمات",
+      projects: "الأعمال",
       about: "عني",
-      skills: "المهارات",
-      projects: "المشاريع",
       contact: "التواصل",
+      whatsappBtn: "واتساب",
     },
-    // Hero Section
     hero: {
-      greeting: "مرحباً، أنا",
-      title: "عبد الرحمن الشواف",
-      subtitle: "مطور Full Stack",
+      badge: "مقيم في أنقرة · دعم مباشر وإمكانية اللقاء وجهاً لوجه",
+      greeting: "مرحباً، أنا عبد الرحمن الشواف",
+      title: "مواقع ويب وحلول برمجية تجلب عملاء حقيقيين لعملك",
       description:
-        "أقوم ببناء تطبيقات ويب قابلة للتوسع باستخدام Python و .NET و React و Next.js. شغوف بإنشاء حلول حديثة تركز على المستخدم.",
-      contactMe: "تواصل معي",
-      downloadCV: "تحميل السيرة الذاتية",
-      viewProjects: "عرض أعمالي",
-      typingTexts: ["مهندس برمجيات Full Stack", "مطور أنظمة قابلة للتوسع", "مهندس واجهات برمجة آمنة", "حلّال مشاكل يركز على المنتج"],
+        "أصمم مواقع سريعة ومتوافقة مع الجوال تتيح لعملائك الاتصال بك أو طلب عرض سعر عبر واتساب بضغطة زر. ترى النموذج الخاص بعملك أولاً، وتدفع فقط عند الموافقة والتشغيل.",
+      whatsappCta: "تواصل عبر واتساب",
+      callCta: "اتصل الآن: 0539 738 94 76",
+      viewProjects: "شاهد أعمالي",
+      typingTexts: [
+        "مواقع احترافية للشركات والأعمال",
+        "ربط مباشر بالاتصال وواتساب",
+        "استضافة سريعة على خادمي الخاص VPS",
+        "برمجيات مخصصة ودعم فني مستمر",
+      ],
+      trustPoints: [
+        {
+          title: "شاهد أولاً وادفع عند التسليم",
+          desc: "تعاين نموذجاً مخصصاً لعملك ولا تدفع إلا بعد التأكد من تشغيل الموقع بنجاح.",
+        },
+        {
+          title: "عميل حقيقي ومستمر",
+          desc: "صممت وأدير موقع شركة Ergun Nakliyat على خادمي الخاص منذ عام كامل.",
+        },
+        {
+          title: "تواصل مباشر في أنقرة",
+          desc: "بدون وسطاء أو تعقيد الوكالات؛ تتواصل معي مباشرة عبر الهاتف أو وجهاً لوجه.",
+        },
+      ],
     },
-    // Stats
-    stats: {
-      experience: "سنة خبرة",
-      projects: "مشروع مكتمل",
-      clients: "عميل سعيد",
+    services: {
+      title: "كيف أساعد عملك؟",
+      subtitle: "حلول رقمية واضحة وعملية بدون مصطلحات تقنية معقدة، مصممة لجلب العملاء وتسهيل عملك.",
+      items: [
+        {
+          key: "website",
+          title: "موقع جوال يجلب العملاء",
+          desc: "موقع سريع وواضح يمكّن الباحثين في جوجل من الاتصال بك أو مراسلتك على واتساب فوراً.",
+        },
+        {
+          key: "hosting",
+          title: "نطاق واستضافة على VPS وشهادة أمان",
+          desc: "أجهز لك كل شيء بالكامل: النطاق الرسمي، الحماية SSL، والاستضافة السريعة على خادمي الخاص.",
+        },
+        {
+          key: "maintenance",
+          title: "سنة كاملة من الدعم والتحديثات",
+          desc: "تحتاج لتعديل رقم هاتف أو صورة أو نص؟ رسالة واحدة على واتساب وأقوم بالتحديث فوراً.",
+        },
+        {
+          key: "software",
+          title: "برمجيات خاصة وشراكة تقنية مستمرة",
+          desc: "لا نقتصر على الموقع فقط؛ أبقى معك لأي برنامج متابعة أو لوحة إدارة أو دعم تقني مستقبلاً.",
+        },
+      ],
+      processTitle: "كيف نعمل معاً؟ (3 خطوات بدون أي مخاطرة)",
+      processSteps: [
+        {
+          step: "01",
+          title: "إعداد نموذج أولي",
+          desc: "أجهز معاينة خاصة باسم شركتك وخدماتك لتراها مباشرة على هاتفك.",
+        },
+        {
+          step: "02",
+          title: "التعديل والإطلاق",
+          desc: "بعد موافقتك أربط الموقع بنطاقك الرسمي وأطلقه بأمان وسرعة.",
+        },
+        {
+          step: "03",
+          title: "التسليم ثم الدفع",
+          desc: "تتأكد من عمل كل شيء على هاتفك ثم يتم الدفع مع حفظ كافة صلاحياتك.",
+        },
+      ],
+      techToggleLabel: "التقنيات والبنية التحتية المستخدمة (للمهتمين بالتفاصيل التقنية)",
+      spokenTitle: "لغات التواصل",
+      spokenLevels: ["التركية (ممتاز)", "العربية (ممتاز)", "الإنجليزية (A2)"],
     },
-    // About Section
+    projects: {
+      title: "أعمال حقيقية ومشاريع منفذة",
+      subtitle: "موقعي المباشر لعميل فعلي وأنظمة برمجية متكاملة قمت بتطويرها:",
+      featuredBadge: "عميل فعلي · يعمل على خادمي منذ عام",
+      viewProject: "افتح الموقع المباشر",
+      viewCode: "الكود المصدري (GitHub)",
+      technologies: "التقنيات:",
+      keyFeatures: "أبرز المزايا:",
+      gallery: "صور المشروع",
+      swipeHint: "اسحب لمشاهدة المزيد",
+      liveBadge: "موقع مباشر",
+      screenshotsLabel: "صور",
+      copyLink: "نسخ الرابط",
+      copied: "تم النسخ!",
+      closePreview: "إغلاق",
+      closeHint: "اضغط بالخارج أو على زر الإغلاق",
+    },
     about: {
-      title: "عني",
-      bio: `خريج هندسة برمجيات ومتخصص في تطوير تطبيقات الويب Full Stack. أعمل على بناء تطبيقات حديثة وقابلة للتوسع مع تركيز قوي على المشاريع الواقعية.
+      title: "من أنا؟",
+      subtitle: "شريكك التقني الموثوق في أنقرة لعمل طويل الأمد",
+      cardRole: "مهندس برمجيات · مطور مواقع وحلول رقمية مستقل",
+      bio: `مرحباً، أنا عبد الرحمن الشواف، مهندس برمجيات مستقل مقيم في أنقرة (جامعة أوستيم التقنية).
 
-أمتلك خبرة عملية في FastAPI و .NET Core و React و PostgreSQL و Docker وإدارة النشر على VPS. أهتم بتصميم واجهات API نظيفة وبناء أنظمة قابلة للصيانة من الواجهة الخلفية إلى الأمامية.
+هدفي ليس تسليم موقع والاختفاء، بل بناء علاقة عمل طويلة الأمد قائمة على الثقة مع أصحاب الأعمال في أنقرة. على سبيل المثال، أدير وأستضيف موقع شركة Ergun Nakliyat منذ عام كامل مع متابعة مستمرة.
 
-أعمل بكفاءة بشكل مستقل وضمن فريق، مع مهارات قوية في حل المشكلات وتحويل متطلبات العملاء إلى حلول جاهزة للإنتاج.`,
+بدلاً من تكاليف الوكالات المرتفعة وصعوبة التواصل، تحصل على مطور مباشر يمكنك الاتصال به أو مقابلته وجهاً لوجه في أنقرة متى احتجت.`,
+      location: "أنقرة، تركيا (إمكانية اللقاء المباشر)",
+      education: "جامعة أوستيم التقنية · هندسة البرمجيات",
+      experience: "Rakort · خبرة عملية لمدة عام",
+      vpsHighlight: "خادم VPS خاص · استضافة مستقرة وسريعة",
       internship: {
-        title: "خبرة التدريب",
-        company: "Rakort - متدرب هندسة برمجيات (2024-07-01 - 2025-07-01)",
-        summary:
-          "أكملت تدريباً طويل المدى في شركة تقنية تقدم حلولاً برمجية ورقمية لعملاء فعليين.",
-        whatWeDoTitle: "ماذا يفعلون",
-        whatWeDo:
-          "ساهمت في مهام تطوير Full Stack باستخدام FastAPI و .NET Core و React و PostgreSQL ضمن بيئة عمل احترافية.",
-        productsTitle: "رؤية المنتجات",
-        products:
-          "اكتسبت خبرة عملية في المعمارية القابلة للتوسع، وسير العمل الحديثة، واستراتيجيات النشر والصيانة.",
+        title: "الخبرة العملية",
+        company: "Rakort — هندسة البرمجيات (سنة واحدة)",
+        summary: "شاركت في تطوير تطبيقات ويب وقواعد بيانات وإدارة النشر ضمن فريق هندسي محترف.",
         websiteLabel: "زيارة Rakort",
       },
-      location: "أنقرة، تركيا",
-      education: "جامعة أوستيم التقنية (خريج)",
-      experience: "Rakort (تدريب 1 سنة)",
-      realProject: "مشروع عميل حقيقي",
-      realProjectDesc: "قمت بتطوير وبيع موقع ويب احترافي لعميل حقيقي",
+      downloadCV: "تحميل السيرة الذاتية (CV)",
     },
-    // Skills Section
-    skills: {
-      title: "المهارات التقنية",
-      categories: {
-        backend: "الواجهة الخلفية",
-        frontend: "الواجهة الأمامية",
-        devops: "DevOps والاستضافة",
-        databases: "قواعد البيانات",
-        tools: "الأدوات والمزيد",
-        languages: "لغات إضافية",
-        spoken: "اللغات المحكية",
-      },
-      spokenLevels: {
-        turkish: "التركية (جيد جداً)",
-        arabic: "العربية (جيد جداً)",
-        english: "الإنجليزية (A2)",
-      },
-    },
-    // Projects Section
-    projects: {
-      title: "المشاريع المميزة",
-      viewProject: "عرض مباشر",
-      viewCode: "الكود المصدري",
-      technologies: "التقنيات:",
-      keyFeatures: "الميزات الرئيسية:",
-      gallery: "صور المشروع",
-      swipeHint: "اسحب إلى اليمين لمشاهدة المزيد من الصور",
-    },
-    // Contact Section
     contact: {
-      title: "تواصل معي",
-      subtitle: "لنعمل معاً",
+      title: "تواصل معي الآن",
+      subtitle: "لنتحدث عن نموذج مخصص لعملك",
       description:
-        "أنا دائماً منفتح لمناقشة المشاريع الجديدة والأفكار الإبداعية أو فرص المشاركة في رؤيتك. لا تتردد في التواصل!",
+        "يمكنك مراسلتي مباشرة على واتساب أو الاتصال بي لمناقشة موقعك أو أي برنامج تحتاجه. كما يمكننا اللقاء وجهاً لوجه داخل أنقرة.",
+      whatsappTitle: "واتساب (الأسرع)",
+      whatsappDesc: "راسلني بضغطة زر وأرد عليك في نفس اليوم",
+      whatsappAction: "ابدأ محادثة واتساب",
+      callTitle: "اتصال هاتفي مباشر",
+      callDesc: "تحدث معي مباشرة",
+      formTitle: "أو اترك رسالة هنا",
       form: {
-        name: "الاسم",
+        name: "الاسم / اسم الشركة",
         email: "البريد الإلكتروني",
-        message: "الرسالة",
+        message: "كيف يمكنني مساعدتك؟",
         send: "إرسال الرسالة",
-        namePlaceholder: "اسمك",
-        emailPlaceholder: "بريدك@الإلكتروني.com",
-        messagePlaceholder: "رسالتك...",
+        namePlaceholder: "اسمك أو اسم مؤسستك",
+        emailPlaceholder: "your@email.com",
+        messagePlaceholder: "اكتب نبذة قصيرة عن عملك وما تحتاجه...",
       },
       info: {
-        phone: "الهاتف",
+        phone: "الهاتف وواتساب",
         email: "البريد الإلكتروني",
         location: "الموقع",
       },
+      status: {
+        sending: "جارٍ الإرسال...",
+        success: "تم إرسال رسالتك بنجاح. سأتواصل معك في أقرب وقت.",
+        error: "حدث خطأ أثناء الإرسال. يرجى التواصل مباشرة عبر واتساب أو الهاتف.",
+        configError: "خدمة البريد غير مفعلة حالياً؛ يرجى التواصل عبر واتساب أو الهاتف.",
+      },
     },
-    // Footer
     footer: {
       rights: "جميع الحقوق محفوظة",
-      developer: "مطور Full Stack",
+      developer: "أنقرة · مواقع ويب وحلول برمجية للشركات",
+      mobileCall: "اتصل الآن",
+      mobileWhatsapp: "واتساب",
     },
   },
 } as const
 
-export type TranslationKey = keyof typeof translations.en
+export type TranslationKey = keyof typeof translations.tr

@@ -1,201 +1,164 @@
 "use client"
 
+import { useState } from "react"
 import { useLanguage } from "@/lib/language-context"
 import {
+  Smartphone,
   Server,
-  Layout,
-  Cloud,
-  Database,
   Wrench,
-  Code,
+  Code2,
+  ChevronDown,
+  ChevronUp,
   Languages,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-const skillLinks: Record<string, string> = {
-  Python: "https://www.python.org/",
-  FastAPI: "https://fastapi.tiangolo.com/",
-  "C#": "https://learn.microsoft.com/dotnet/csharp/",
-  ".NET Core 8": "https://dotnet.microsoft.com/en-us/download/dotnet/8.0",
-  "RESTful API": "https://restfulapi.net/",
-  React: "https://react.dev/",
-  TypeScript: "https://www.typescriptlang.org/",
-  JavaScript: "https://developer.mozilla.org/docs/Web/JavaScript",
-  HTML: "https://developer.mozilla.org/docs/Web/HTML",
-  CSS: "https://developer.mozilla.org/docs/Web/CSS",
-  "Tailwind CSS": "https://tailwindcss.com/",
-  "Next.js": "https://nextjs.org/",
-  "Node.js": "https://nodejs.org/",
-  VPS: "https://en.wikipedia.org/wiki/Virtual_private_server",
-  VDS: "https://en.wikipedia.org/wiki/Virtual_dedicated_server",
-  "Dedicated Servers": "https://en.wikipedia.org/wiki/Dedicated_hosting_service",
-  Docker: "https://www.docker.com/",
-  Cloudflare: "https://www.cloudflare.com/",
-  PostgreSQL: "https://www.postgresql.org/",
-  MongoDB: "https://www.mongodb.com/",
-  Firebase: "https://firebase.google.com/",
-  Git: "https://git-scm.com/",
-  GitHub: "https://github.com/",
-  Postman: "https://www.postman.com/",
-  Swagger: "https://swagger.io/",
-  Figma: "https://www.figma.com/",
-  "C++": "https://isocpp.org/",
-  C: "https://en.wikipedia.org/wiki/C_(programming_language)",
-}
+const serviceIcons = {
+  website: Smartphone,
+  hosting: Server,
+  maintenance: Wrench,
+  software: Code2,
+} as const
 
-const skillCategories = [
-  {
-    key: "backend",
-    icon: Server,
-    skills: ["Python", "FastAPI", "C#", ".NET Core 8", "RESTful API"],
-    gradient: "from-[#06B6D4] to-[#0284C7]",
-  },
-  {
-    key: "frontend",
-    icon: Layout,
-    skills: [
-      "React",
-      "TypeScript",
-      "JavaScript",
-      "HTML",
-      "CSS",
-      "Tailwind CSS",
-      "Next.js",
-      "Node.js",
-    ],
-    gradient: "from-[#0EA5E9] to-[#06B6D4]",
-  },
-  {
-    key: "devops",
-    icon: Cloud,
-    skills: ["VPS", "VDS", "Dedicated Servers", "Docker", "Cloudflare"],
-    gradient: "from-[#22D3EE] to-[#0EA5E9]",
-  },
-  {
-    key: "databases",
-    icon: Database,
-    skills: ["PostgreSQL", "MongoDB", "Firebase"],
-    gradient: "from-[#38BDF8] to-[#22D3EE]",
-  },
-  {
-    key: "tools",
-    icon: Wrench,
-    skills: ["Git", "GitHub", "Postman", "Swagger", "Figma"],
-    gradient: "from-[#0284C7] to-[#0369A1]",
-  },
-  {
-    key: "languages",
-    icon: Code,
-    skills: ["C++", "C"],
-    gradient: "from-[#06B6D4] to-[#22D3EE]",
-  },
+const techStack = [
+  "Next.js",
+  "React",
+  "TypeScript",
+  "Tailwind CSS",
+  "Python",
+  "FastAPI",
+  ".NET Core",
+  "PostgreSQL",
+  "Docker",
+  "Linux VPS",
+  "Cloudflare",
 ]
 
 export function SkillsSection() {
   const { t, isRTL } = useLanguage()
+  const [showTech, setShowTech] = useState(false)
 
   return (
-    <section id="skills" className="py-16 sm:py-20 md:py-32 relative overflow-hidden">
-      {/* Background gradient decoration */}
+    <section id="services" className="py-16 sm:py-20 md:py-28 relative overflow-hidden">
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[var(--gradient-primary-start)]/5 rounded-full blur-[100px]" />
+        <div className="absolute top-0 left-1/4 w-[380px] h-[380px] bg-[var(--gradient-primary-start)]/5 rounded-full blur-[100px]" />
         <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-[var(--gradient-secondary-start)]/5 rounded-full blur-[100px]" />
       </div>
 
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Title */}
-          <div className={cn("mb-12", isRTL && "text-right")}>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              <span className="text-gradient">{t.skills.title}</span>
+          <div className={cn("mb-10 sm:mb-12", isRTL && "text-right")}>
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">
+              <span className="text-gradient">{t.services.title}</span>
             </h2>
-            <div className={cn(
-              "w-20 h-1 bg-gradient-to-r from-[var(--gradient-primary-start)] to-[var(--gradient-primary-end)] rounded-full",
-              isRTL && "ml-auto"
-            )} />
+            <div
+              className={cn(
+                "w-20 h-1 bg-gradient-to-r from-[var(--gradient-primary-start)] to-[var(--gradient-primary-end)] rounded-full mb-4",
+                isRTL && "ml-auto"
+              )}
+            />
+            <p className="text-muted-foreground text-sm sm:text-base max-w-2xl leading-relaxed">
+              {t.services.subtitle}
+            </p>
           </div>
 
-          {/* Skills Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {skillCategories.map((category, index) => (
-              <div
-                key={category.key}
-                className="p-4 sm:p-6 bg-card rounded-xl border border-border card-glow hover-scale group"
-              >
+          {/* 4 Plain-Language Service Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-14">
+            {t.services.items.map((item) => {
+              const Icon = serviceIcons[item.key as keyof typeof serviceIcons] || Smartphone
+              return (
                 <div
+                  key={item.key}
                   className={cn(
-                    "flex items-center gap-3 mb-4",
-                    isRTL && "flex-row-reverse"
+                    "p-6 bg-card rounded-2xl border border-border card-glow transition-all duration-300 hover:-translate-y-0.5",
+                    isRTL && "text-right"
                   )}
                 >
-                  <div className={cn(
-                    "p-2.5 rounded-lg bg-gradient-to-br transition-all duration-300",
-                    category.gradient,
-                    "opacity-80 group-hover:opacity-100 group-hover:scale-110"
-                  )}>
-                    <category.icon size={20} className="text-white" />
+                  <div className={cn("flex items-start gap-4", isRTL && "flex-row-reverse")}>
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-[#06B6D4] to-[#0EA5E9] shrink-0 shadow-md">
+                      <Icon size={22} className="text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-foreground mb-2">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="text-lg font-semibold text-foreground">
-                    {
-                      t.skills.categories[
-                        category.key as keyof typeof t.skills.categories
-                      ]
-                    }
-                  </h3>
                 </div>
+              )
+            })}
+          </div>
+
+          {/* 3-Step Zero-Risk Process */}
+          <div className="p-6 sm:p-8 rounded-3xl bg-card/90 border border-primary/25 shadow-lg mb-8">
+            <h3 className={cn("text-xl sm:text-2xl font-bold text-foreground mb-6", isRTL && "text-right")}>
+              {t.services.processTitle}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+              {t.services.processSteps.map((s) => (
                 <div
-                  className={cn("flex flex-wrap gap-2", isRTL && "justify-end")}
+                  key={s.step}
+                  className={cn(
+                    "p-5 rounded-2xl bg-background/60 border border-border/70",
+                    isRTL && "text-right"
+                  )}
                 >
-                  {category.skills.map((skill) => {
-                    const href = skillLinks[skill]
-
-                    return (
-                      <a
-                        key={skill}
-                        href={href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 sm:px-4 py-2 sm:py-1.5 bg-muted text-xs sm:text-sm text-muted-foreground rounded-lg border border-border skill-tag hover:text-foreground hover:border-primary/50 hover:bg-card transition-all duration-300"
-                        aria-label={`${skill} resmi sayfasi`}
-                        title={`${skill} - resmi sayfayi ac`}
-                      >
-                        {skill}
-                      </a>
-                    )
-                  })}
+                  <span className="inline-block text-xs font-extrabold tracking-widest px-2.5 py-1 rounded-full bg-primary/15 text-primary mb-3">
+                    {s.step}
+                  </span>
+                  <h4 className="text-base font-bold text-foreground mb-2">{s.title}</h4>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
                 </div>
-              </div>
-            ))}
-
-            {/* Spoken Languages Card */}
-            <div className="p-4 sm:p-6 bg-card rounded-xl border border-border card-glow hover-scale group">
-              <div
-                className={cn(
-                  "flex items-center gap-3 mb-4",
-                  isRTL && "flex-row-reverse"
-                )}
-              >
-                <div className="p-2.5 rounded-lg bg-gradient-to-br from-[#22D3EE] to-[#38BDF8] opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300">
-                  <Languages size={20} className="text-white" />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground">
-                  {t.skills.categories.spoken}
-                </h3>
-              </div>
-              <div
-                className={cn("flex flex-wrap gap-2", isRTL && "justify-end")}
-              >
-                <span className="px-3 py-1.5 bg-muted text-sm text-muted-foreground rounded-lg border border-border skill-tag cursor-default">
-                  {t.skills.spokenLevels.turkish}
-                </span>
-                <span className="px-3 py-1.5 bg-muted text-sm text-muted-foreground rounded-lg border border-border skill-tag cursor-default">
-                  {t.skills.spokenLevels.arabic}
-                </span>
-                <span className="px-3 py-1.5 bg-muted text-sm text-muted-foreground rounded-lg border border-border skill-tag cursor-default">
-                  {t.skills.spokenLevels.english}
-                </span>
-              </div>
+              ))}
             </div>
+          </div>
+
+          {/* Collapsible Technical Stack (keeps esnaf view uncluttered while showing depth to tech visitors) */}
+          <div className="rounded-2xl border border-border/70 bg-card/60 overflow-hidden">
+            <button
+              type="button"
+              onClick={() => setShowTech((prev) => !prev)}
+              className={cn(
+                "w-full px-5 py-4 flex items-center justify-between gap-3 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors",
+                isRTL && "flex-row-reverse"
+              )}
+            >
+              <span>{t.services.techToggleLabel}</span>
+              {showTech ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+            </button>
+
+            {showTech && (
+              <div className={cn("px-5 pb-5 pt-1 border-t border-border/60 space-y-4", isRTL && "text-right")}>
+                <div className={cn("flex flex-wrap gap-2 pt-3", isRTL && "justify-end")}>
+                  {techStack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1.5 bg-muted text-xs sm:text-sm text-foreground/85 rounded-lg border border-border font-medium"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                <div className={cn("flex flex-wrap items-center gap-2 pt-2", isRTL && "flex-row-reverse")}>
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary">
+                    <Languages size={14} />
+                    {t.services.spokenTitle}:
+                  </span>
+                  {t.services.spokenLevels.map((lang) => (
+                    <span
+                      key={lang}
+                      className="px-2.5 py-1 bg-background/70 text-xs text-muted-foreground rounded-md border border-border"
+                    >
+                      {lang}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
